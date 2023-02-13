@@ -7,6 +7,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./add-tag.component.scss']
 })
 export class AddTagComponent {
+  @Output() tagAdded = new EventEmitter<string[]>();
+  @Output() tagDeleted = new EventEmitter<string[]>();
   tags: string[] = [];
   faTimes = faTimes;
 
