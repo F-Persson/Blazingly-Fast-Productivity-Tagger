@@ -9,10 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SaveTagComponent {
   url!: string;
-  title?: string;
-  selection?: string;
+  title: string = '';
+  selection: string = '';
   tags: string[] = [];
-  tagInput: string = '';
 
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -22,26 +21,11 @@ export class SaveTagComponent {
     });
   }
 
-  // constructor(private route: ActivatedRoute) {
-  //   chrome.runtime.onMessage.addListener((message: any) => {
-  //     if (message.action === 'setPopup') {
-  //       this.url = message.url;
-  //       this.title = message.title;
-  //       this.selection = message.selection;
-  //       // chrome.browserAction.setPopup({ popup: 'index.html#popup' });
-  //       chrome.windows.getCurrent(function (currentWindow) {
-  //         const windowWidth = 400;
-  //         const windowHeight = 400;
-  //         chrome.windows.create(
-  //           {
-  //             url: "index.html#popup",
-  //             type: "popup",
-  //             width: windowWidth,
-  //             height: windowHeight,
-  //           }
-  //         );
-  //       });
-  //     }
-  //   });
-  // }
+  shorten(str: string, len: number): string {
+    if (str.length <= len) {
+      return str;
+    } else {
+      return str.slice(0, len) + '...';
+    }
+  }
 }

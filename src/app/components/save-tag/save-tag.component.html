@@ -1,7 +1,7 @@
 <div class="tag">
-  <a href="{{ url }}">{{ url }}</a>
-  <h3>{{ title }}</h3>
+  <a href="{{ url }}">{{ shorten(url, 30) }}</a>
+  <h3>{{ shorten(title, 75) }}</h3>
 
-  <div class="selection">{{ selection }}</div>
+  <div class="selection">{{ shorten(selection, 100) }}</div>
   <app-add-tag></app-add-tag>
 </div>

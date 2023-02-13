@@ -1,8 +1,8 @@
 export interface TagItem {
-    id?: number;
+    id: number;
     tags?: string[];
     day: string;
-    selection?: string;
+    selection: string;
     url: string;
-    title?: string;
+    title: string;
 }

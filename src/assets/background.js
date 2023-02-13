@@ -1,7 +1,3 @@
-chrome.runtime.onInstalled.addListener(() => {
-    console.log("hello")
-});
-
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "createWindow") {
@@ -28,7 +24,6 @@ function openPopup(selectedText, url, title) {
         const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}`;
         chrome.windows.create({
             url: popupUrl,
-            //url: "index.html#popup",
             type: "popup",
             width: windowWidth,
             height: windowHeight,
