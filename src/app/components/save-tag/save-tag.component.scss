@@ -1,0 +1,21 @@
+.add-form {
+  margin-bottom: 40px;
+}
+
+.tag {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+}
+
+.tag h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selection {
+  font-style: italic;
+}
