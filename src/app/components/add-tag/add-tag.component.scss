@@ -25,3 +25,9 @@
   color: red;
   cursor: pointer;
 }
+
+.two-column-list {
+  column-count: 2;
+  column-gap: 20px;
+  list-style: none;
+}

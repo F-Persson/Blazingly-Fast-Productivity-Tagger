@@ -8,10 +8,15 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 
 
-// TODO
 
-// Loop through mock-TagItem and display them in the options page
+  // Loop through mock-TagItem and display them in the options page
+  // Add button in save tag to save the tagItem to the database
 
-// Make a database for the TagItem
 
-// Add button in save tag to save the tagItem to the database
+  // TODO
+  // Make a database for the TagItem
+  // re-use the save-tag component to use both in popup and options page
+
+  // add the search bar to the top of the options page
+  // add some icons to the left bar in the options page
+  // fix the css

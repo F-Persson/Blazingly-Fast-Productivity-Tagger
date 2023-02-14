@@ -1,7 +1,16 @@
 <div class="tag">
-  <a href="{{ url }}">{{ shorten(url, 30) }}</a>
-  <h3>{{ shorten(title, 75) }}</h3>
+  <div class="tag-title">
+    <h3>
+      <a href="{{ this.url }}">{{ shorten(this.title, 75) }}</a>
+    </h3>
+  </div>
 
   <div class="selection">{{ shorten(selection, 100) }}</div>
   <app-add-tag></app-add-tag>
+  <form class="add-form" (submit)="onSubmit($event)">
+    <div class="form-control">
+      <input type="submit" value="Save" class="btn" />
+      <!-- <input type="submit" [value]="save ? 'Save' : 'Update'" class="btn" /> -->
+    </div>
+  </form>
 </div>

@@ -36,3 +36,24 @@
 .selection {
   font-style: italic;
 }
+
+.two-column-list {
+  column-count: 2;
+  column-gap: 20px;
+  list-style: none;
+}
+
+.tag-title {
+  font-weight: bold;
+}
+
+.faTimes {
+  color: red;
+  cursor: pointer;
+}
+
+.faTrash {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}

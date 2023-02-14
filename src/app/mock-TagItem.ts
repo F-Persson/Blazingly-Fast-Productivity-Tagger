@@ -14,7 +14,7 @@ export const TagItems: TagItem[] = [
         time: "31 march 2021",
         selection: "",
         url: "https://bing.com",
-        title: "",
+        title: "Bing",
         tags: []
     },
     {
@@ -23,6 +23,6 @@ export const TagItems: TagItem[] = [
         selection: "C# MVC",
         url: "https://learn.microsoft.com",
         title: "MVC API",
-        tags: ["funny", "programming"]
+        tags: ["funny", "programming", "Api", "C#", "MVC"]
     },
 ];

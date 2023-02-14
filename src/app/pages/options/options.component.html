@@ -1,14 +1,48 @@
 <div class="topbar"></div>
 <div class="sidebar"></div>
+
 <div class="container-item">
   <div class="items" *ngFor="let TagItem of tagItems">
-    <div class="url">
-      <a href="{{ TagItem.url }}">{{ shorten(TagItem.url, 30) }}</a>
+    <fa-icon
+      class="faTrash"
+      [icon]="faTrash"
+      (click)="deleteItem(TagItem.id)"
+    ></fa-icon>
+
+    <div class="tag-title">
+      <h3>
+        <a href="{{ TagItem.url }}">{{ shorten(TagItem.title, 75) }}</a>
+      </h3>
     </div>
+
     <div class="selection">
       {{ TagItem.selection }}
     </div>
-    {{ TagItem.title }}
-    {{ TagItem.tags }}
+
+    <form class="add-form" (submit)="addTag($event)">
+      <div class="form-control">
+        <label>
+          <input type="text" name="text" id="tags" placeholder="Add Tags" />
+        </label>
+        <input type="submit" value="Add tag" class="btn" />
+      </div>
+    </form>
+
+    <ul class="two-column-list">
+      <li *ngFor="let tag of TagItem.tags">
+        {{ tag }}
+        <fa-icon
+          class="faTimes"
+          [icon]="faTimes"
+          (click)="deleteTag(TagItem, tag)"
+        ></fa-icon>
+      </li>
+    </ul>
+    <form class="add-form" (submit)="updateItem(TagItem)">
+      <div class="form-control">
+        <input type="submit" value="Update" class="btn" />
+        <!-- <input type="submit" [value]="save ? 'Save' : 'Update'" class="btn" /> -->
+      </div>
+    </form>
   </div>
 </div>

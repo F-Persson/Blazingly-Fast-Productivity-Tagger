@@ -7,8 +7,7 @@
   </div>
 </form>
 <div *ngIf="tags.length > 0" class="tag-list">
-  <h4>Tags:</h4>
-  <ul>
+  <ul class="two-column-list">
     <li *ngFor="let tag of tags">
       {{ tag }}
       <fa-icon

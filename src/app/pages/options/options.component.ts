@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TagItem } from 'src/app/TagItem';
 import { TagItems } from 'src/app/mock-TagItem';
-
+import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-options',
@@ -16,7 +16,11 @@ export class OptionsComponent implements TagItem {
   url!: string;
   title: string = '';
 
+  save: boolean = false;
+
   tagItems: TagItem[] = TagItems;
+  faTimes = faTimes;
+  faTrash = faTrash;
 
 
   shorten(str: string, len: number): string {
@@ -37,7 +41,17 @@ export class OptionsComponent implements TagItem {
     }
   }
 
-  deleteTag(tag: string) {
-    this.tags = this.tags.filter(t => t !== tag);
+  deleteTag(TagItem: TagItem, tag: string) {
+    TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
+  }
+
+  deleteItem(id: number) {
+    this.tagItems = this.tagItems.filter(t => t.id !== id);
+  }
+
+  updateItem(TagItem: TagItem) {
+    alert('updating item ' + TagItem.id);
   }
 }
+
+
