@@ -3,24 +3,26 @@ import { TagItem } from './TagItem';
 export const TagItems: TagItem[] = [
     {
         id: 1,
-        tags: ["Hello", "World"],
-        day: "13 feb 2021",
+        time: "13 feb 2021",
         selection: "About this page",
         url: "https://example.com",
-        title: "search here"
+        title: "search here",
+        tags: ["Hello", "World"]
     },
     {
         id: 2,
-        tags: [],
-        day: "31 march 2021",
-        url: "https://google.com",
+        time: "31 march 2021",
+        selection: "",
+        url: "https://bing.com",
+        title: "",
+        tags: []
     },
     {
         id: 3,
-        tags: ["funny", "programming"],
-        day: "13 aug 2022",
+        time: "13 aug 2022",
         selection: "C# MVC",
         url: "https://learn.microsoft.com",
-        title: "MVC API"
+        title: "MVC API",
+        tags: ["funny", "programming"]
     },
 ];

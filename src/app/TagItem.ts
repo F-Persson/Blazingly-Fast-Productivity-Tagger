@@ -1,7 +1,7 @@
 export interface TagItem {
     id: number;
     tags?: string[];
-    day: string;
+    time: string;
     selection: string;
     url: string;
     title: string;

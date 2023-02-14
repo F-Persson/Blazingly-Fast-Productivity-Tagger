@@ -10,4 +10,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 // TODO
 
-// Remove the hardcoded url, Page title and selected text
+// Loop through mock-TagItem and display them in the options page
+
+// Make a database for the TagItem
+
+// Add button in save tag to save the tagItem to the database

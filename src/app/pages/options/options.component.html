@@ -1,1 +1,6 @@
-<p>options works!</p>
+<div class="items" *ngFor="let TagItem of tagItems">
+  <a href="{{ TagItem.url }}">{{ shorten(TagItem.url, 30) }}</a>
+  {{ TagItem.selection }}
+  {{ TagItem.title }}
+  {{ TagItem.tags }}
+</div>
