@@ -10,7 +10,7 @@ import { TagItems } from 'src/app/mock-TagItem';
 })
 export class OptionsComponent implements TagItem {
   id!: number;
-  tags?: string[];
+  tags: string[] = [];
   time!: string;
   selection: string = '';
   url!: string;
@@ -27,4 +27,17 @@ export class OptionsComponent implements TagItem {
     }
   }
 
+  addTag(event: Event) {
+    event.preventDefault();
+    const inputElement = document.getElementById('tags') as HTMLInputElement;
+    const tag = inputElement.value.trim();
+    if (tag.length > 0) {
+      this.tags.push(tag);
+      inputElement.value = '';
+    }
+  }
+
+  deleteTag(tag: string) {
+    this.tags = this.tags.filter(t => t !== tag);
+  }
 }

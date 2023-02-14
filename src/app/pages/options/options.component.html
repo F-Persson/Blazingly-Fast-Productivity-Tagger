@@ -1,6 +1,14 @@
-<div class="items" *ngFor="let TagItem of tagItems">
-  <a href="{{ TagItem.url }}">{{ shorten(TagItem.url, 30) }}</a>
-  {{ TagItem.selection }}
-  {{ TagItem.title }}
-  {{ TagItem.tags }}
+<div class="topbar"></div>
+<div class="sidebar"></div>
+<div class="container-item">
+  <div class="items" *ngFor="let TagItem of tagItems">
+    <div class="url">
+      <a href="{{ TagItem.url }}">{{ shorten(TagItem.url, 30) }}</a>
+    </div>
+    <div class="selection">
+      {{ TagItem.selection }}
+    </div>
+    {{ TagItem.title }}
+    {{ TagItem.tags }}
+  </div>
 </div>

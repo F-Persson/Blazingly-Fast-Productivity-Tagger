@@ -1,0 +1,38 @@
+.topbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 4%;
+  background-color: #fff;
+  border-bottom: 1px solid steelblue;
+  margin-bottom: 1px;
+}
+
+.container-item {
+  position: fixed;
+  margin-top: 5%;
+  margin-left: 20%;
+}
+
+.items {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid steelblue;
+  border-radius: 5px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 5%;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+}
+
+.selection {
+  font-style: italic;
+}
