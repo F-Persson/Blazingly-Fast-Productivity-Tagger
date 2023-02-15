@@ -23,3 +23,20 @@
 .selection {
   font-style: italic;
 }
+
+.faTimes {
+  color: red;
+  cursor: pointer;
+}
+
+.two-column-list {
+  column-count: 2;
+  column-gap: 20px;
+  list-style: none;
+}
+
+.faTrash {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+}

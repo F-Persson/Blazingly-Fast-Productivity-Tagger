@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TagItem } from 'src/app/TagItem';
 import { TagItems } from 'src/app/mock-TagItem';
 import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,11 @@ import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./options.component.scss'],
 })
 export class OptionsComponent implements TagItem {
+  @Input() tagItems: TagItem[] = TagItems;
+  @Output() tagItemSelected = new EventEmitter<TagItem>();
+
+  save: boolean = false;
+
   id!: number;
   tags: string[] = [];
   time!: string;
@@ -16,9 +21,7 @@ export class OptionsComponent implements TagItem {
   url!: string;
   title: string = '';
 
-  save: boolean = false;
-
-  tagItems: TagItem[] = TagItems;
+  //public tagItems: TagItem[] = TagItems;
   faTimes = faTimes;
   faTrash = faTrash;
 
@@ -31,12 +34,12 @@ export class OptionsComponent implements TagItem {
     }
   }
 
-  addTag(event: Event) {
+  addTag(event: Event, TagItem: TagItem) {
     event.preventDefault();
     const inputElement = document.getElementById('tags') as HTMLInputElement;
     const tag = inputElement.value.trim();
     if (tag.length > 0) {
-      this.tags.push(tag);
+      TagItem.tags?.push(tag);
       inputElement.value = '';
     }
   }

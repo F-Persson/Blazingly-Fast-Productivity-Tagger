@@ -5,10 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AddTagComponent } from './components/add-tag/add-tag.component';
 import { SaveTagComponent } from './components/save-tag/save-tag.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { PopupComponent } from './pages/popup/popup.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -20,10 +20,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    AddTagComponent,
     SaveTagComponent,
     OptionsComponent,
     PopupComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

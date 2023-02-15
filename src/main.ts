@@ -15,6 +15,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
   // TODO
   // Make a database for the TagItem
+
+
+  // unable to do this:
   // re-use the save-tag component to use both in popup and options page
 
   // add the search bar to the top of the options page
