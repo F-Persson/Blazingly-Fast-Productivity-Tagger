@@ -9,6 +9,7 @@ import { SaveTagComponent } from './components/save-tag/save-tag.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { PopupComponent } from './pages/popup/popup.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DisplayitemsComponent } from './components/displayitems/displayitems.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     OptionsComponent,
     PopupComponent,
     SidebarComponent,
+    DisplayitemsComponent,
   ],
   imports: [
     BrowserModule,
