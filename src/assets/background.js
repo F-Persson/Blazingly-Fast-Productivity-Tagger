@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(
 function openPopup(selectedText, url, title) {
     chrome.windows.getCurrent(function (currentWindow) {
         const windowWidth = 400;
-        const windowHeight = 400;
+        const windowHeight = 300;
         const left = Math.round(
             currentWindow.left + (currentWindow.width - windowWidth) / 2
         );

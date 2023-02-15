@@ -1,8 +1,7 @@
 ///<reference types="chrome"/>
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TagItem } from 'src/app/TagItem';
-import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 

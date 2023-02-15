@@ -10,8 +10,12 @@
   padding: 5px;
   border: 2px solid steelblue;
   border-radius: 5px;
-  background-color: #313552;
+  background-color: #30475e;
   color: white;
+}
+
+.items:hover {
+  border: 2px solid gold;
 }
 
 .faTrash {
