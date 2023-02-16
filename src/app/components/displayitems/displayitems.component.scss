@@ -1,10 +1,14 @@
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
 }
 
 .items {
   position: relative;
+  height: 800px;
+  width: 400px;
   margin: 10px;
   padding: 5px;
   border: 2px solid steelblue;
@@ -13,10 +17,8 @@
   color: white;
 }
 
-.faTrash {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
+.items:hover {
+  border: 2px solid gold;
 }
 
 .add-form {
@@ -28,9 +30,20 @@
   align-items: center;
 }
 
+.faTrash {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+}
+.faTrash:hover {
+  animation: bounce 0.2s 3;
+}
+
 .faTimes {
   display: inline-block;
-  background-color: black;
   color: red;
   cursor: pointer;
   position: absolute;
@@ -39,8 +52,20 @@
   font-size: 15px;
 }
 
-.items:hover {
-  border: 2px solid gold;
+.faTimes:hover {
+  animation: bounce 0.2s 3;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .selection {
@@ -65,6 +90,12 @@
   justify-content: space-between;
   align-items: center;
   color: darkblue;
+  font-weight: bold;
+}
+
+.list-item:hover {
+  color: white;
+  background-color: black;
 }
 
 .tag-title {

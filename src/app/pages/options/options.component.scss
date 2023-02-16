@@ -5,10 +5,12 @@
   position: fixed;
   top: 0;
   left: 0;
+  overflow: auto;
 }
 
 .container-item {
   position: fixed;
   left: 20%;
   top: 5%;
+  overflow: auto;
 }

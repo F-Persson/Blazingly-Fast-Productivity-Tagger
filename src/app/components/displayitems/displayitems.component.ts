@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TagItem } from 'src/app/TagItem';
+import { db, TagItem } from 'src/app/db';
 import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -13,8 +13,6 @@ export class DisplayitemsComponent {
   @Input() save!: boolean;
 
 
-  //save: boolean = false;
-
   id!: number;
   tags: string[] = [];
   time!: string;
@@ -22,7 +20,6 @@ export class DisplayitemsComponent {
   url!: string;
   title: string = '';
 
-  //public tagItems: TagItem[] = TagItems;
   faTimes = faTimes;
   faTrash = faTrash;
 
@@ -45,22 +42,34 @@ export class DisplayitemsComponent {
   }
 
   deleteTag(TagItem: TagItem, tag: string) {
+    console.log("Deleting tag " + tag + " from item " + TagItem.id);
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
-  }
-
-  deleteItem(id: number) {
-    this.tagItems = this.tagItems?.filter(t => t.id !== id);
   }
 
   onSubmit(TagItem: TagItem, save: boolean) {
     if (save) {
-      alert("creating this");
+      console.log("Creating item " + TagItem.id)
+      this.createItem(TagItem);
     } else {
+      console.log("updating item " + TagItem.id)
       this.updateItem(TagItem);
     }
   }
 
-  updateItem(TagItem: TagItem) {
-    alert('updating item ' + TagItem.id);
+  async createItem(TagItem: TagItem) {
+    console.log('Creating item with id: ' + TagItem.id);
+    await db.TagItem.add(TagItem, TagItem.id)
+  }
+
+  async deleteItem(TagItem: TagItem) {
+    console.log('Deleted item created at: ' + TagItem.time);
+    await db.TagItem.delete(TagItem.id);
+  }
+
+  async updateItem(TagItem: TagItem) {
+    console.log('Updated item: ' + TagItem.id);
+    await db.TagItem.update(TagItem.id, {
+      tags: TagItem.tags
+    });
   }
 }

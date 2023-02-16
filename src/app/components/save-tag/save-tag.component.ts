@@ -1,8 +1,8 @@
+//import { TagItem } from 'src/app/TagItem';
 ///<reference types="chrome"/>
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TagItem } from 'src/app/TagItem';
-
+import { AppDB, db, TagItem } from 'src/app/db';
 
 
 @Component({
@@ -18,14 +18,17 @@ export class SaveTagComponent {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.tagItems = [{
-        id: 4,
-        tags: [],
-        time: new Date().toLocaleString(),
-        selection: params['selectedText'],
-        url: params['url'],
-        title: params['title'],
-      }];
+      db.TagItem.orderBy('id').reverse().first().then((maxTagItem: TagItem | undefined) => {
+        const maxId: number = maxTagItem ? maxTagItem.id : 0;
+        this.tagItems = [{
+          id: maxId + 1,
+          tags: [],
+          time: new Date().toLocaleString(),
+          selection: params['selectedText'],
+          url: params['url'],
+          title: params['title'],
+        }];
+      });
     });
   }
 }

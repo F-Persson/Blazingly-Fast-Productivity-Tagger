@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
-import { TagItem } from 'src/app/TagItem';
-import { TagItems } from 'src/app/mock-TagItem';
+import { liveQuery } from 'dexie';
+import { db, TagItem } from 'src/app/db';
+
 
 @Component({
   selector: 'app-options',
   templateUrl: './options.component.html',
   styleUrls: ['./options.component.scss'],
 })
-
 export class OptionsComponent {
   save: boolean = false;
-  public tagItems: TagItem[] = TagItems;
+  tagItems: TagItem[] = [];
+
+
+  constructor() {
+    liveQuery(() => db.TagItem.toArray()).subscribe((tagItems: TagItem[]) => {
+      this.tagItems = tagItems;
+    });
+  }
 }
-
-
