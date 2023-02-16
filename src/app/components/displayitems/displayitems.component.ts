@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TagItem } from 'src/app/TagItem';
-import { TagItems } from 'src/app/mock-TagItem';
 import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -28,21 +27,20 @@ export class DisplayitemsComponent {
   faTrash = faTrash;
 
 
+
+  addTag(event: Event, TagItem: TagItem) {
+    event.preventDefault();
+    const inputElement = document.getElementById(`tags${TagItem.id}`) as HTMLInputElement;
+    const tag = inputElement.value.trim();
+    TagItem.tags?.push(tag);
+    inputElement.value = '';
+  }
+
   shorten(str: string, len: number): string {
     if (str.length <= len) {
       return str;
     } else {
       return str.slice(0, len) + '...';
-    }
-  }
-
-  addTag(event: Event, TagItem: TagItem) {
-    event.preventDefault();
-    const inputElement = document.getElementById('tags') as HTMLInputElement;
-    const tag = inputElement.value.trim();
-    if (tag.length > 0) {
-      TagItem.tags?.push(tag);
-      inputElement.value = '';
     }
   }
 
