@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "createWindow") {
-            openPopup(request.selectedText, request.url, request.title);
+            openPopup(request.selectedText, request.url, request.title, request.html);
         };
         if (request.action === "msgToBackground") {
             sendResponse({ farewell: "Msg received in background script" });
@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(
 
 
 //openPopup;
-function openPopup(selectedText, url, title) {
+function openPopup(selectedText, url, title, html) {
     chrome.windows.getCurrent(function (currentWindow) {
         const windowWidth = 400;
         const windowHeight = 350;
@@ -21,7 +21,7 @@ function openPopup(selectedText, url, title) {
         const top = Math.round(
             currentWindow.top + (currentWindow.height - windowHeight) / 2
         );
-        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}`;
+        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}&html=${encodeURIComponent(html)}`;
         chrome.windows.create({
             url: popupUrl,
             type: "popup",

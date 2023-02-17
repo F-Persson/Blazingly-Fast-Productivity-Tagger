@@ -8,6 +8,7 @@ export interface TagItem {
     selection: string;
     url: string;
     title: string;
+    html: string;
 }
 
 export class AppDB extends Dexie {
@@ -15,8 +16,8 @@ export class AppDB extends Dexie {
 
     constructor() {
         super("ngdexieliveQuery");
-        this.version(3).stores({
-            TagItem: 'id,tags,time,selection,url,title'
+        this.version(4).stores({
+            TagItem: 'id,tags,time,selection,url,title,html'
         });
         this.TagItem = this.table('TagItem');
     }

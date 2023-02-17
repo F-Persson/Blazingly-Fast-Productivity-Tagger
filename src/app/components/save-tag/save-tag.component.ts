@@ -27,6 +27,7 @@ export class SaveTagComponent {
           selection: params['selectedText'],
           url: params['url'],
           title: params['title'],
+          html: params['html']
         }];
       });
     });

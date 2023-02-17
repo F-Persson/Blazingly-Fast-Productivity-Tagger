@@ -1,57 +1,63 @@
 <div class="flex-container">
-  <div class="items" *ngFor="let TagItem of tagItems">
-    <fa-icon
-      *ngIf="!save"
-      class="faTrash"
-      [icon]="faTrash"
-      (click)="deleteItem(TagItem)"
-    ></fa-icon>
+  <div
+    class="items"
+    *ngFor="let TagItem of tagItems"
+    [ngClass]="{ 'show-back': isRotated }"
+  >
+    <div class="itemsfront">
+      <fa-icon
+        *ngIf="!save"
+        class="faTrash"
+        [icon]="faTrash"
+        (click)="deleteItem(TagItem)"
+      ></fa-icon>
 
-    <div class="tag-title">
-      <a href="{{ TagItem.url }}" class="tag-link">
-        {{ shorten(TagItem.title, 75) }}</a
-      >
-    </div>
+      <div class="tag-title">
+        <a href="{{ TagItem.url }}" class="tag-link">
+          {{ shorten(TagItem.title, 75) }}</a
+        >
+      </div>
 
-    <div class="selection">
-      {{ shorten(TagItem.selection, 100) }}
-    </div>
+      <div class="selection" (click)="rotate(TagItem)">
+        {{ shorten(TagItem.selection, 100) }}
+      </div>
 
-    <form class="add-form" (submit)="addTag($event, TagItem)">
-      <div class="formcontrol">
-        <label>
+      <form class="add-form" (submit)="addTag($event, TagItem)">
+        <div class="formcontrol">
+          <label>
+            <input
+              type="text"
+              name="text"
+              id="tags{{ TagItem.id }}"
+              placeholder="Add Tag"
+            />
+          </label>
+          <input type="submit" value="Add tag" class="btn" />
+        </div>
+      </form>
+
+      <div *ngIf="TagItem.tags && TagItem.tags.length > 0" class="tag-list">
+        <ul class="two-column-list">
+          <li *ngFor="let tag of TagItem.tags" class="list-item">
+            {{ tag }}
+            <fa-icon
+              class="faTimes"
+              [icon]="faTimes"
+              (click)="deleteTag(TagItem, tag)"
+            ></fa-icon>
+          </li>
+        </ul>
+      </div>
+
+      <form class="save-form" (submit)="onSubmit(TagItem, save)">
+        <div class="form-control">
           <input
-            type="text"
-            name="text"
-            id="tags{{ TagItem.id }}"
-            placeholder="Add Tag"
+            type="submit"
+            [value]="save ? 'Save' : 'Update'"
+            class="button"
           />
-        </label>
-        <input type="submit" value="Add tag" class="btn" />
-      </div>
-    </form>
-
-    <div *ngIf="TagItem.tags && TagItem.tags.length > 0" class="tag-list">
-      <ul class="two-column-list">
-        <li *ngFor="let tag of TagItem.tags" class="list-item">
-          {{ tag }}
-          <fa-icon
-            class="faTimes"
-            [icon]="faTimes"
-            (click)="deleteTag(TagItem, tag)"
-          ></fa-icon>
-        </li>
-      </ul>
+        </div>
+      </form>
     </div>
-
-    <form class="save-form" (submit)="onSubmit(TagItem, save)">
-      <div class="form-control">
-        <input
-          type="submit"
-          [value]="save ? 'Save' : 'Update'"
-          class="button"
-        />
-      </div>
-    </form>
   </div>
 </div>

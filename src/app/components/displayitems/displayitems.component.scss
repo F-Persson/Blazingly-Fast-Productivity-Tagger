@@ -5,7 +5,15 @@
   overflow: auto;
 }
 
-.items {
+.items.show-back .itemsfront {
+  display: none;
+}
+
+.items.show-back .itemsback {
+  display: block;
+}
+
+.itemsfront {
   position: relative;
   height: 270px;
   width: 400px;
@@ -17,8 +25,13 @@
   color: white;
 }
 
-.items:hover {
+.itemsfront:hover {
   border: 2px solid gold;
+}
+
+.itemsfront.rotate {
+  transform: rotateY(180deg);
+  transition: transform 0.5s ease-in-out;
 }
 
 .button {
@@ -124,6 +137,10 @@
   font-size: 16px;
   word-wrap: break-word;
   margin: 10px;
+}
+
+.selection:hover {
+  cursor: pointer;
 }
 
 .two-column-list {
