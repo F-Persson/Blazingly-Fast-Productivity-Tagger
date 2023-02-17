@@ -2,7 +2,7 @@
 ///<reference types="chrome"/>
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AppDB, db, TagItem } from 'src/app/db';
+import { db, TagItem } from 'src/app/db';
 
 
 @Component({
@@ -27,7 +27,6 @@ export class SaveTagComponent {
           selection: params['selectedText'],
           url: params['url'],
           title: params['title'],
-          html: params['html']
         }];
       });
     });

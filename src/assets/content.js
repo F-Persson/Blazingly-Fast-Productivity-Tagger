@@ -4,8 +4,8 @@ document.addEventListener('mousedown', function (e) {
         let selectedText = getSelectedText();
         let url = window.location.href;
         let title = document.title;
-        let html = gethtml();
-        openPopup(selectedText, url, title, html);
+        // let html = gethtml();
+        openPopup(selectedText, url, title);
     };
     if (e.ctrlKey && e.button === 2) {
         var selectedText = getSelectedText();
@@ -14,26 +14,25 @@ document.addEventListener('mousedown', function (e) {
 });
 
 // Send message to background.js to open popup
-function openPopup(selectedText, url, title, html) {
+function openPopup(selectedText, url, title) {
     (async () => {
         chrome.runtime.sendMessage({
             selectedText: selectedText,
             url: url,
             title: title,
-            html: html,
             action: "createWindow",
         });
     })();
 }
 
-function gethtml() {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const container = document.createElement("div");
-    container.appendChild(range.cloneContents());
-    const html = container.innerHTML;
-    return html;
-}
+// function gethtml() {
+//     const selection = window.getSelection();
+//     const range = selection.getRangeAt(0);
+//     const container = document.createElement("div");
+//     container.appendChild(range.cloneContents());
+//     const html = container.innerHTML;
+//     return html;
+// }
 
 // get selected text
 function getSelectedText() {

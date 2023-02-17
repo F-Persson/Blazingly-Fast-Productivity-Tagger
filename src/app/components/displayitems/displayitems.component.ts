@@ -20,14 +20,16 @@ export class DisplayitemsComponent {
   title: string = '';
   html: string = '';
 
+
   faTimes = faTimes;
   faTrash = faTrash;
 
-  isRotated = false;
-  rotate(TagItem: TagItem) {
-    this.isRotated = !this.isRotated;
-    console.log(this.isRotated);
+  flipcard(TagItem: TagItem) {
+    console.log("flipping item-" + TagItem.id);
+    const item = document.getElementById("item-" + TagItem.id)
+    item?.classList.toggle("flipcard");
   }
+
 
   addTag(event: Event, TagItem: TagItem) {
     event.preventDefault();
@@ -52,19 +54,21 @@ export class DisplayitemsComponent {
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
   }
 
-  onSubmit(TagItem: TagItem, save: boolean) {
+  async onSubmit(TagItem: TagItem, save: boolean) {
     if (save) {
       console.log('Creating item ' + TagItem.id);
-      this.createItem(TagItem);
+      await this.createItem(TagItem);
+      window.close();
     } else {
       console.log('updating item ' + TagItem.id);
-      this.updateItem(TagItem);
+      await this.updateItem(TagItem);
     }
   }
 
   async createItem(TagItem: TagItem) {
     console.log('Creating item with id: ' + TagItem.id);
     await db.TagItem.add(TagItem, TagItem.id);
+    return;
   }
 
   async deleteItem(TagItem: TagItem) {

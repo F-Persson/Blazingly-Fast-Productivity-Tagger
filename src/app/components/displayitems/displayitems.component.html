@@ -1,11 +1,7 @@
-<div class="flex-container">
-  <div
-    class="items"
-    *ngFor="let TagItem of tagItems"
-    [ngClass]="{ 'show-back': isRotated }"
-  >
-    <div *ngIf="!isRotated">
-      <div class="itemsfront">
+<div class="maincontainer">
+  <div *ngFor="let TagItem of tagItems">
+    <div class="items" id="item-{{ TagItem.id }}">
+      <div class="front">
         <fa-icon
           *ngIf="!save"
           class="faTrash"
@@ -19,7 +15,7 @@
           >
         </div>
 
-        <div class="selection" (click)="rotate(TagItem)">
+        <div class="selection" (click)="flipcard(TagItem)">
           {{ shorten(TagItem.selection, 100) }}
         </div>
 
@@ -38,16 +34,16 @@
         </form>
 
         <div *ngIf="TagItem.tags && TagItem.tags.length > 0" class="tag-list">
-          <ul class="two-column-list">
-            <li *ngFor="let tag of TagItem.tags" class="list-item">
+          <div class="two-column-list">
+            <div *ngFor="let tag of TagItem.tags" class="list-item">
               {{ tag }}
               <fa-icon
                 class="faTimes"
                 [icon]="faTimes"
                 (click)="deleteTag(TagItem, tag)"
               ></fa-icon>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <form class="save-form" (submit)="onSubmit(TagItem, save)">
@@ -60,9 +56,15 @@
           </div>
         </form>
       </div>
-    </div>
-    <div *ngIf="isRotated">
-      {{ TagItem.html }}
+      <div class="back">
+        <div
+          class="selection"
+          (click)="flipcard(TagItem)"
+          [innerText]="TagItem.selection"
+        >
+          <!-- {{ TagItem.html }} -->
+        </div>
+      </div>
     </div>
   </div>
 </div>

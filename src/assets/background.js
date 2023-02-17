@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener(
 //openPopup;
 function openPopup(selectedText, url, title, html) {
     chrome.windows.getCurrent(function (currentWindow) {
-        const windowWidth = 400;
+        const windowWidth = 500;
         const windowHeight = 350;
         const left = Math.round(
             currentWindow.left + (currentWindow.width - windowWidth) / 2
@@ -21,7 +21,7 @@ function openPopup(selectedText, url, title, html) {
         const top = Math.round(
             currentWindow.top + (currentWindow.height - windowHeight) / 2
         );
-        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}&html=${encodeURIComponent(html)}`;
+        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}`;
         chrome.windows.create({
             url: popupUrl,
             type: "popup",
