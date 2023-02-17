@@ -18,7 +18,7 @@
     </div>
 
     <form class="add-form" (submit)="addTag($event, TagItem)">
-      <div class="form-control">
+      <div class="formcontrol">
         <label>
           <input
             type="text"
@@ -44,9 +44,13 @@
       </ul>
     </div>
 
-    <form class="add-form" (submit)="onSubmit(TagItem, save)">
+    <form class="save-form" (submit)="onSubmit(TagItem, save)">
       <div class="form-control">
-        <input type="submit" [value]="save ? 'Save' : 'Update'" class="btn" />
+        <input
+          type="submit"
+          [value]="save ? 'Save' : 'Update'"
+          class="button"
+        />
       </div>
     </form>
   </div>
