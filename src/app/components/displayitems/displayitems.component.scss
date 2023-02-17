@@ -5,14 +5,6 @@
   overflow: auto;
 }
 
-.items.show-back .itemsfront {
-  display: none;
-}
-
-.items.show-back .itemsback {
-  display: block;
-}
-
 .itemsfront {
   position: relative;
   height: 270px;
@@ -29,10 +21,24 @@
   border: 2px solid gold;
 }
 
-.itemsfront.rotate {
+.items.show-back .itemsfront {
+  // display: none;
   transform: rotateY(180deg);
   transition: transform 0.5s ease-in-out;
 }
+
+.items:not(.show-back) .itemsfront {
+  transform: rotateY(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.items.show-back .itemsback {
+  // display: block;
+}
+// .itemsfront.rotate {
+//   transform: rotateY(180deg);
+//   transition: transform 0.5s ease-in-out;
+// }
 
 .button {
   position: absolute;

@@ -26,8 +26,7 @@ export class DisplayitemsComponent {
   isRotated = false;
   rotate(TagItem: TagItem) {
     this.isRotated = !this.isRotated;
-    console.log(TagItem.selection);
-    console.log(TagItem.html);
+    console.log(this.isRotated);
   }
 
   addTag(event: Event, TagItem: TagItem) {
