@@ -1,3 +1,13 @@
 <div class="topbar">
-  <p>topbar works!</p>
+  <input
+    type="search"
+    class="search"
+    placeholder="Search"
+    (input)="searchOnChange($event)"
+  />
+  <ul>
+    <li *ngFor="let result of searchResults">
+      {{ result.title }}
+    </li>
+  </ul>
 </div>

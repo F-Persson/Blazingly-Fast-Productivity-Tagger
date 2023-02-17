@@ -5,6 +5,19 @@
   top: 0;
   left: 0;
   height: 4%;
-  border-bottom: 1px solid steelblue;
   margin-bottom: 1px;
+}
+
+.search {
+  background-color: #30475e;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+  border-radius: 2px;
+  font-size: 14px;
+  border: 2px solid steelblue;
+}
+
+.search:hover {
+  border: 2px solid gold;
 }
