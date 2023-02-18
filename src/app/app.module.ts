@@ -8,6 +8,10 @@ import { SaveTagComponent } from './components/save-tag/save-tag.component';
 import { OptionsComponent } from './pages/options/options.component';
 import { PopupComponent } from './pages/popup/popup.component';
 import { DisplayitemsComponent } from './components/displayitems/displayitems.component';
+import { IconComponent } from './components/icon/icon.component';
+import { TitleComponent } from './components/title/title.component';
+import { SelectionComponent } from './components/selection/selection.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -22,6 +26,10 @@ const appRoutes: Routes = [
     OptionsComponent,
     PopupComponent,
     DisplayitemsComponent,
+    IconComponent,
+    TitleComponent,
+    SelectionComponent,
+    TagsComponent,
   ],
   imports: [
     BrowserModule,

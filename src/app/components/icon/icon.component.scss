@@ -1,0 +1,11 @@
+.trashAndEdit {
+  margin: 3px;
+  position: absolute;
+  left: 93%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+.trashAndEdit:hover {
+  animation: bounce 0.2s 3;
+}
