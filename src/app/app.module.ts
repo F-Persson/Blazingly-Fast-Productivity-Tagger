@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SaveTagComponent } from './components/save-tag/save-tag.component';
 import { OptionsComponent } from './pages/options/options.component';
@@ -19,7 +18,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     SaveTagComponent,
     OptionsComponent,
     PopupComponent,
