@@ -5,9 +5,16 @@
     placeholder="Search"
     (input)="searchOnChange($event)"
   />
-  <ul>
-    <li *ngFor="let result of searchResults">
-      {{ result.title }}
-    </li>
-  </ul>
+  <div class="searchdropdown" *ngIf="searchResults.length > 0">
+    <app-displayitems
+      [tagItems]="searchResults"
+      [save]="save"
+    ></app-displayitems>
+  </div>
 </div>
+
+<!-- <ul>
+  <li *ngFor="let result of searchResults">
+    {{ result.title }}
+  </li>
+</ul> -->

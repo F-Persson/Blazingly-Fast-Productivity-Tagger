@@ -7,7 +7,8 @@ import { db, TagItem } from 'src/app/db';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent {
-  searchResults?: TagItem[];
+  searchResults: TagItem[] = [];
+  save: boolean = false;
 
   async searchOnChange(event: any) {
     const searchTerm = event.target.value.trim();
@@ -17,10 +18,16 @@ export class TopbarComponent {
       return;
     }
 
-    const results = await db.TagItem.where('tags').anyOfIgnoreCase(searchTerm).or('title').startsWithIgnoreCase(searchTerm).or('url').startsWithIgnoreCase(searchTerm).toArray();
-    this.searchResults = results;
 
-    // convert the result to TagItem
+    const allItems = await db.TagItem.toArray();
+    const results = allItems.filter((item: TagItem) => {
+      return item.url.toLowerCase().includes(searchTerm.toLowerCase())
+        || item.title.toLowerCase().includes(searchTerm.toLowerCase())
+        || item.selection.toLowerCase().includes(searchTerm.toLowerCase())
+        || item.tags?.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+    });
+
+
     this.searchResults = results.map((result: TagItem) => {
       return {
         id: result.id,
@@ -31,6 +38,6 @@ export class TopbarComponent {
         title: result.title,
       };
     });
-    //    console.log('Search results: ', this.searchResults);
+    console.log('Search results: ', this.searchResults);
   }
 }
