@@ -5,16 +5,8 @@
     placeholder="Search"
     (input)="searchOnChange($event)"
   />
-  <div class="searchdropdown" *ngIf="searchResults.length > 0">
-    <app-displayitems
-      [tagItems]="searchResults"
-      [save]="save"
-    ></app-displayitems>
-  </div>
+  <app-displayitems
+    [tagItems]="hasSearchResults ? searchResults : []"
+    [save]="save"
+  ></app-displayitems>
 </div>
-
-<!-- <ul>
-  <li *ngFor="let result of searchResults">
-    {{ result.title }}
-  </li>
-</ul> -->

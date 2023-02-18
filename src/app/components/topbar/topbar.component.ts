@@ -9,14 +9,17 @@ import { db, TagItem } from 'src/app/db';
 export class TopbarComponent {
   searchResults: TagItem[] = [];
   save: boolean = false;
+  hasSearchResults = false;
 
   async searchOnChange(event: any) {
     const searchTerm = event.target.value.trim();
 
     if (searchTerm.length === 0) {
       this.searchResults = [];
+      this.hasSearchResults = false;
       return;
     }
+    this.hasSearchResults = true;
 
 
     const allItems = await db.TagItem.toArray();

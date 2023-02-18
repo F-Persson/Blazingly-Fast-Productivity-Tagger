@@ -1,4 +1,14 @@
-<div class="app-container">
-  <app-displayitems [tagItems]="tagItems" [save]="save"></app-displayitems>
+<div class="topbar">
+  <input
+    type="search"
+    class="search"
+    placeholder="Search"
+    (input)="searchOnChange($event)"
+  />
+  <div class="app-container">
+    <app-displayitems
+      [tagItems]="hasSearchResults ? searchResults : tagItems"
+      [save]="save"
+    ></app-displayitems>
+  </div>
 </div>
-<app-topbar></app-topbar>
