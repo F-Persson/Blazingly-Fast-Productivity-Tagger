@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { db, TagItem } from 'src/app/db';
-import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,17 +12,12 @@ export class DisplayitemsComponent {
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
 
-  id!: number;
-  tags: string[] = [];
-  time!: string;
-  selection: string = '';
-  url!: string;
-  title: string = '';
-  html: string = '';
+  editing = false;
 
 
   faTimes = faTimes;
   faTrash = faTrash;
+  faEdit = faEdit;
 
   flipcard(TagItem: TagItem) {
     console.log("flipping item-" + TagItem.id);
@@ -30,15 +25,20 @@ export class DisplayitemsComponent {
     item?.classList.toggle("flipcard");
   }
 
+  async saveEdit(TagItem: TagItem) {
+    console.log('Updated item: ' + TagItem.id);
+    await db.TagItem.update(TagItem.id, {
+      tags: TagItem.selection,
+    });
+    this.editing = this.editing!;
+  }
 
-  addTag(event: Event, TagItem: TagItem) {
-    event.preventDefault();
-    const inputElement = document.getElementById(
-      `tags${TagItem.id}`
-    ) as HTMLInputElement;
-    const tag = inputElement.value.trim();
-    TagItem.tags?.push(tag);
-    inputElement.value = '';
+  async editSelection(TagItem: TagItem) {
+    this.editing = !this.editing;
+  }
+
+  onTagAdded(tagItem: TagItem) {
+    this.updateItem(tagItem);
   }
 
   shorten(str: string, len: number): string {
@@ -52,6 +52,7 @@ export class DisplayitemsComponent {
   deleteTag(TagItem: TagItem, tag: string) {
     console.log('Deleting tag ' + tag + ' from item ' + TagItem.id);
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
+    this.updateItem(TagItem);
   }
 
   async onSubmit(TagItem: TagItem, save: boolean) {
@@ -80,6 +81,7 @@ export class DisplayitemsComponent {
     console.log('Updated item: ' + TagItem.id);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
+      Selection: TagItem.selection,
     });
   }
 }

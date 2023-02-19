@@ -16,7 +16,7 @@ export class SaveTagComponent {
 
   constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.queryParams.subscribe(params => {
       db.TagItem.orderBy('id').reverse().first().then((maxTagItem: TagItem | undefined) => {
         const maxId: number = maxTagItem ? maxTagItem.id : 0;

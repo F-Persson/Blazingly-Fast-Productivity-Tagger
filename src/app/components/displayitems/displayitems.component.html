@@ -2,68 +2,69 @@
   <div *ngFor="let TagItem of tagItems">
     <div class="items" id="item-{{ TagItem.id }}">
       <div class="front">
-        <fa-icon
+        <app-icon
+          [className]="'faTrash'"
           *ngIf="!save"
-          class="faTrash"
           [icon]="faTrash"
+          [color]="'red'"
           (click)="deleteItem(TagItem)"
-        ></fa-icon>
+        ></app-icon>
 
-        <div class="tag-title">
-          <a href="{{ TagItem.url }}" class="tag-link">
-            {{ shorten(TagItem.title, 75) }}</a
-          >
-        </div>
+        <app-title [title]="shorten(TagItem.title, 75)" [url]="TagItem.url">
+        </app-title>
 
-        <div class="selection" (click)="flipcard(TagItem)">
-          {{ shorten(TagItem.selection, 100) }}
-        </div>
+        <app-selection
+          [selection]="shorten(TagItem.selection, 100)"
+          (click)="flipcard(TagItem)"
+        ></app-selection>
 
-        <form class="add-form" (submit)="addTag($event, TagItem)">
-          <div class="formcontrol">
-            <label>
-              <input
-                type="text"
-                name="text"
-                id="tags{{ TagItem.id }}"
-                placeholder="Add Tag"
-              />
-            </label>
-            <input type="submit" value="Add tag" class="btn" />
-          </div>
-        </form>
+        <app-tags
+          [tagItem]="TagItem"
+          (tagAdded)="onTagAdded($event)"
+        ></app-tags>
 
-        <div *ngIf="TagItem.tags && TagItem.tags.length > 0" class="tag-list">
+        <div *ngIf="TagItem.tags && TagItem.tags.length > 0">
           <div class="two-column-list">
-            <div *ngFor="let tag of TagItem.tags" class="list-item">
-              {{ tag }}
-              <fa-icon
-                class="faTimes"
+            <div
+              *ngFor="let tag of TagItem.tags"
+              class="list-item"
+              style="display: inline-flex"
+            >
+              <span style="padding: 2px; border-radius: 5px">{{ tag }}</span>
+
+              <app-icon
+                [className]="'faTimes'"
                 [icon]="faTimes"
+                [color]="'red'"
                 (click)="deleteTag(TagItem, tag)"
-              ></fa-icon>
+              ></app-icon>
             </div>
           </div>
         </div>
 
-        <form class="save-form" (submit)="onSubmit(TagItem, save)">
-          <div class="form-control">
-            <input
-              type="submit"
-              [value]="save ? 'Save' : 'Update'"
-              class="button"
-            />
-          </div>
+        <form *ngIf="save" (submit)="onSubmit(TagItem, save)">
+          <input type="submit" [value]="'save'" class="button" />
         </form>
       </div>
+
       <div class="back">
-        <div
-          class="selection"
+        <app-icon
+          [className]="'faTrash'"
+          [icon]="faEdit"
+          [color]="'rgb(17, 17, 95)'"
+          (click)="editSelection(TagItem)"
+        ></app-icon>
+
+        <app-title [title]="TagItem.title" [url]="TagItem.url"> </app-title>
+
+        <app-selection
+          [selection]="TagItem.selection"
           (click)="flipcard(TagItem)"
-          [innerText]="TagItem.selection"
-        >
-          <!-- {{ TagItem.html }} -->
-        </div>
+        ></app-selection>
+
+        <form *ngIf="save" (submit)="saveEdit(TagItem)">
+          <input type="submit" [value]="'Save'" class="button" />
+        </form>
       </div>
     </div>
   </div>

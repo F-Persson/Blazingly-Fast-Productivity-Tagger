@@ -7,6 +7,8 @@
 
 .items {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   height: 270px;
   width: 400px;
   margin: 10px;
@@ -35,21 +37,8 @@
   backface-visibility: hidden;
   overflow: auto;
   transform: rotateY(180deg);
-}
-
-.save-form {
-  align-self: flex-start;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.formcontrol {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 1rem;
+  left: 0;
+  top: 0;
 }
 
 .items:hover {
@@ -63,11 +52,14 @@
 
 .button {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 0;
   left: 0;
+  right: 0;
   border: none;
   outline: 0;
-  display: inline-block;
   padding: 8px;
   color: white;
   background-color: rgb(17, 17, 95);
@@ -78,56 +70,7 @@
   font-weight: bold;
 }
 
-.btn {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 3px;
-  color: white;
-  background-color: rgb(17, 17, 95);
-  text-align: center;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-}
-
 .button:hover {
-  animation: bounce 0.2s 3;
-}
-
-.add-form {
-  align-self: flex-start;
-  margin: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.faTrash {
-  margin: 8px;
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  color: red;
-  font-weight: bold;
-  font-size: 15px;
-}
-.faTrash:hover {
-  animation: bounce 0.2s 3;
-}
-
-.faTimes {
-  display: inline-block;
-  color: red;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.faTimes:hover {
   animation: bounce 0.2s 3;
 }
 
@@ -141,17 +84,6 @@
   100% {
     transform: translateY(0);
   }
-}
-
-.selection {
-  font-style: italic;
-  font-size: 16px;
-  word-wrap: break-word;
-  margin: 10px;
-}
-
-.selection:hover {
-  cursor: pointer;
 }
 
 .two-column-list {
@@ -172,26 +104,10 @@
   align-items: center;
   color: darkblue;
   font-weight: bold;
+  margin: 5px;
 }
 
 .list-item:hover {
   color: white;
   background-color: black;
-}
-
-.tag-title {
-  font-weight: bold;
-  color: #f1e0ac;
-  margin: 8px;
-}
-
-.tag-text {
-  display: block;
-}
-
-.tag-link {
-  color: #f1e0ac;
-  text-decoration: none; /* optional */
-  font-size: 16px;
-  font-weight: bold;
 }
