@@ -30,7 +30,7 @@
               class="list-item"
               style="display: inline-flex"
             >
-              <span style="padding: 5px; border-radius: 5px">{{ tag }}</span>
+              <span style="padding: 2px; border-radius: 5px">{{ tag }}</span>
 
               <app-icon
                 [className]="'faTimes'"
@@ -42,18 +42,14 @@
           </div>
         </div>
 
-        <form (submit)="onSubmit(TagItem, save)">
-          <input
-            type="submit"
-            [value]="save ? 'Save' : 'Update'"
-            class="button"
-          />
+        <form *ngIf="save" (submit)="onSubmit(TagItem, save)">
+          <input type="submit" [value]="'save'" class="button" />
         </form>
       </div>
 
       <div class="back">
         <app-icon
-          [className]="'trashAndEdit'"
+          [className]="'faTrash'"
           [icon]="faEdit"
           [color]="'rgb(17, 17, 95)'"
           (click)="editSelection(TagItem)"
@@ -66,7 +62,7 @@
           (click)="flipcard(TagItem)"
         ></app-selection>
 
-        <form (submit)="saveEdit(TagItem)">
+        <form *ngIf="save" (submit)="saveEdit(TagItem)">
           <input type="submit" [value]="'Save'" class="button" />
         </form>
       </div>

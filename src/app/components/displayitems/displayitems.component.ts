@@ -41,7 +41,6 @@ export class DisplayitemsComponent {
     this.updateItem(tagItem);
   }
 
-
   shorten(str: string, len: number): string {
     if (str.length <= len) {
       return str;
@@ -53,6 +52,7 @@ export class DisplayitemsComponent {
   deleteTag(TagItem: TagItem, tag: string) {
     console.log('Deleting tag ' + tag + ' from item ' + TagItem.id);
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
+    this.updateItem(TagItem);
   }
 
   async onSubmit(TagItem: TagItem, save: boolean) {
@@ -81,6 +81,7 @@ export class DisplayitemsComponent {
     console.log('Updated item: ' + TagItem.id);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
+      Selection: TagItem.selection,
     });
   }
 }
