@@ -21,12 +21,18 @@ export class DisplayitemsComponent {
 
 
   async onEdited(TagItem: TagItem) {
-    console.log("onEdited: " + TagItem.selection);
-    await this.updateItem(TagItem);
+    console.log("This doesn't work yet. Feel free to help me out! https://github.com/F-Persson/tagger");
+    await db.TagItem.update(TagItem.id, {
+      Selection: TagItem.selection,
+    });
   }
 
-
-
+  async reloadTags() {
+    this.tagItems = await db.TagItem.toArray();
+    for (let i = 0; i < this.tagItems.length; i++) {
+      console.log(this.tagItems[i].selection);
+    }
+  }
 
 
   flipcard(TagItem: TagItem) {
@@ -55,9 +61,6 @@ export class DisplayitemsComponent {
     this.updateItem(tagItem);
   }
 
-  selectionChange(tagItem: TagItem) {
-    this.updateItem(tagItem);
-  }
 
   shorten(str: string, len: number): string {
     if (str.length <= len) {
@@ -97,7 +100,7 @@ export class DisplayitemsComponent {
 
   async updateItem(TagItem: TagItem) {
     console.log('Updated item: ' + TagItem.id);
-    console.log("TagItem.selection: " + TagItem.selection);
+    console.log("New selection: " + TagItem.selection);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
       Selection: TagItem.selection,

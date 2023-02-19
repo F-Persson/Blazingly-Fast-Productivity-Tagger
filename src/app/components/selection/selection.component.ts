@@ -15,14 +15,13 @@ export class SelectionComponent {
   textareaValue!: string;
 
   ngOnInit() {
-    this.textareaValue = this.TagItem.selection;
+    this.textareaValue = "This doesn't work yet. Feel free to help me out! https://github.com/F-Persson/tagger"
   }
 
 
   edited(TagItem: TagItem) {
     TagItem.selection = this.textareaValue;
-    console.log("this.TagItem.selection: " + this.TagItem.selection);
-    this.textEdited.emit(this.TagItem);
+    this.textEdited.emit(TagItem);
   }
 
   shorten(str: string, len: number): string {
@@ -32,6 +31,4 @@ export class SelectionComponent {
       return str.slice(0, len) + '...';
     }
   }
-
-
 }

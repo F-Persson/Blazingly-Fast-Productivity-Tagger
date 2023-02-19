@@ -24,14 +24,15 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   
   // add flipfunction to TagItem, the angular way. 
   
+  /// Skipped this for now
+  // Works to edit the selection but not to save it to the database
+  // Add function to edit icon to edit the selection
+  
   // TODO
 
-  // Add function to edit icon to edit the selection
-
-  
   // Add button to flip all
   
-  // add dropdown to show all Tags and group by tags
+  // Add dropdown to show all Tags and group by tags
   
   // Add post requests and get requests to the backend
   // To share the TagItem with all users in a public domain
