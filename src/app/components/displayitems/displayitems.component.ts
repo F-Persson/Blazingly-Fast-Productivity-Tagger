@@ -10,8 +10,6 @@ import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-i
   styleUrls: ['./displayitems.component.scss'],
 })
 export class DisplayitemsComponent {
-
-
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
 
@@ -22,12 +20,9 @@ export class DisplayitemsComponent {
   faCheck = faCheck;
 
 
-  onTextareaValueChange(value: string) {
-    console.log(value);
-  }
-
-  onEdited(value: string) {
-    console.log(value);
+  async onEdited(TagItem: TagItem) {
+    console.log("onEdited: " + TagItem.selection);
+    await this.updateItem(TagItem);
   }
 
 
@@ -43,20 +38,8 @@ export class DisplayitemsComponent {
   }
 
 
-
-
-
   async editSelection(TagItem: TagItem) {
     TagItem.isEditing = !TagItem.isEditing;
-  }
-
-
-  async saveSelection(TagItem: TagItem, inputVal: string) {
-    console.log("Saving selection");
-    console.log("TagItem.selection: " + TagItem.selection);
-    TagItem.selection = inputVal;
-    TagItem.isEditing = false;
-    console.log("New selection: " + TagItem.selection);
   }
 
 
@@ -114,6 +97,7 @@ export class DisplayitemsComponent {
 
   async updateItem(TagItem: TagItem) {
     console.log('Updated item: ' + TagItem.id);
+    console.log("TagItem.selection: " + TagItem.selection);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
       Selection: TagItem.selection,

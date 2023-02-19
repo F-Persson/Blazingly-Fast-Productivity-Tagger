@@ -59,7 +59,7 @@
           (click)="
             !TagItem.isEditing
               ? editSelection(TagItem)
-              : this.selectionComponent.edited()
+              : this.selectionComponent.edited(TagItem)
           "
         ></app-icon>
 
@@ -69,7 +69,7 @@
           #selectionComponent
           [TagItem]="TagItem"
           (click)="!TagItem.isEditing ? flipcard(TagItem) : null"
-          (textareaValueChange)="onTextareaValueChange($event)"
+          (textEdited)="onEdited($event)"
         ></app-selection>
 
         <form *ngIf="save" (submit)="saveEdit(TagItem)">

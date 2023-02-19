@@ -9,6 +9,8 @@
 <textarea
   *ngIf="TagItem.isEditing"
   name="text"
+  rows="8"
+  cols="40"
   id="edit{{ TagItem.id }}"
   placeholder="{{ TagItem.selection }}"
   [(ngModel)]="textareaValue"

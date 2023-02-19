@@ -9,7 +9,8 @@ import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-i
 })
 export class SelectionComponent {
   @Input() TagItem!: TagItem;
-  @Output() textareaValueChange = new EventEmitter<string>();
+  @Output() textEdited = new EventEmitter<TagItem>();
+  faCheck = faCheck;
 
   textareaValue!: string;
 
@@ -18,11 +19,11 @@ export class SelectionComponent {
   }
 
 
-
-  edited() {
-    this.textareaValueChange.emit(this.textareaValue);
+  edited(TagItem: TagItem) {
+    TagItem.selection = this.textareaValue;
+    console.log("this.TagItem.selection: " + this.TagItem.selection);
+    this.textEdited.emit(this.TagItem);
   }
-
 
   shorten(str: string, len: number): string {
     if (str.length <= len) {
@@ -32,36 +33,5 @@ export class SelectionComponent {
     }
   }
 
-  faCheck = faCheck;
 
-  // async edited(TagItem: TagItem) {
-  //   const inputElement = document.getElementById(`edit${this.TagItem.id}`) as HTMLInputElement;
-  //   console.log("inputElement: " + inputElement);
-  //   const newSelection = inputElement.value.trim();
-  //   console.log("newSelection: " + newSelection);
-  // }
-  // this.TagItem.selection = newSelection;
-  // inputElement.value = '';
-  // this.selectionChange.emit(this.TagItem);
-
-  // newSelection(event: Event) {
-  //   event.preventDefault();
-  //   const inputElement = document.getElementById(`edit${this.TagItem.id}`) as HTMLInputElement;
-  //   const newSelection = inputElement.value.trim();
-  //   this.TagItem.selection = newSelection;
-  //   inputElement.value = '';
-  //   this.selectionChange.emit(this.TagItem);
-  // }
-
-  // onSelectionChange(selectionInput: HTMLInputElement) {
-  //   this.selectionChange.emit(selectionInput.value);
-  // }
-  // onSelectionChange(newSelection: string, TagItem: TagItem) {
-  //   TagItem.selection = newSelection;
-  //   TagItem.isEditing = false;
-  // }
-
-  // onSelectionClick(TagItem: any) {
-  //   this.editSelection(TagItem);
-  // }
 }
