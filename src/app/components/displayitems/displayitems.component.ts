@@ -41,15 +41,6 @@ export class DisplayitemsComponent {
     this.updateItem(tagItem);
   }
 
-  addTag(event: Event, TagItem: TagItem) {
-    event.preventDefault();
-    const inputElement = document.getElementById(
-      `tags${TagItem.id}`
-    ) as HTMLInputElement;
-    const tag = inputElement.value.trim();
-    TagItem.tags?.push(tag);
-    inputElement.value = '';
-  }
 
   shorten(str: string, len: number): string {
     if (str.length <= len) {

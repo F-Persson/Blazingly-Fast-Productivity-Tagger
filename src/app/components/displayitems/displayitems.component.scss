@@ -74,16 +74,6 @@
   animation: bounce 0.2s 3;
 }
 
-.faTimes {
-  display: inline-block;
-  color: red;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  font-weight: bold;
-  font-size: 15px;
-}
-
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -119,8 +109,4 @@
 .list-item:hover {
   color: white;
   background-color: black;
-}
-
-.tag-text {
-  display: block;
 }
