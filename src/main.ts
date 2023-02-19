@@ -18,8 +18,13 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // re-use the save-tag component to use both in popup and options page
   
   // add the search bar to the top of the options page
+  
+  // implement the search function
 
   // TODO
 
-  // implement the search function
-  
+  // add isEditing and isFlipped to TagItem
+
+  // add flipfunction to TagItem, the angular way. Also to flipall
+
+  // add Tags and group by tags
