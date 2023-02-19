@@ -20,18 +20,9 @@ export class DisplayitemsComponent {
   faCheck = faCheck;
 
 
-  async onEdited(TagItem: TagItem) {
+  onEdited(TagItem: TagItem) {
     console.log("This doesn't work yet. Feel free to help me out! https://github.com/F-Persson/tagger");
-    await db.TagItem.update(TagItem.id, {
-      Selection: TagItem.selection,
-    });
-  }
-
-  async reloadTags() {
-    this.tagItems = await db.TagItem.toArray();
-    for (let i = 0; i < this.tagItems.length; i++) {
-      console.log(this.tagItems[i].selection);
-    }
+    this.updateItem(TagItem);
   }
 
 
