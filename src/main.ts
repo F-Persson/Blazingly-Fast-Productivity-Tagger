@@ -21,5 +21,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
   // TODO
 
-  // implement the search function
-  
+  // add isEditing and isFlipped to TagItem
+
+  // add flipfunction to TagItem, the angular way. Also to flipall
+
+  // add Tags and group by tags
