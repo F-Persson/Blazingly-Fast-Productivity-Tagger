@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';  // <-- Import FormsModule
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FontAwesomeModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true, useHash: true }),
   ],
   providers: [],

@@ -18,7 +18,7 @@
         </app-title>
 
         <app-selection
-          [selection]="shorten(TagItem.selection, 100)"
+          [TagItem]="TagItem"
           (click)="flipcard(TagItem)"
         ></app-selection>
 
@@ -54,16 +54,22 @@
       <div class="back">
         <app-icon
           [className]="'faTrash'"
-          [icon]="faEdit"
+          [icon]="!TagItem.isEditing ? faEdit : faCheck"
           [color]="'rgb(17, 17, 95)'"
-          (click)="editSelection(TagItem)"
+          (click)="
+            !TagItem.isEditing
+              ? editSelection(TagItem)
+              : this.selectionComponent.edited()
+          "
         ></app-icon>
 
         <app-title [title]="TagItem.title" [url]="TagItem.url"> </app-title>
 
         <app-selection
-          [selection]="TagItem.selection"
-          (click)="flipcard(TagItem)"
+          #selectionComponent
+          [TagItem]="TagItem"
+          (click)="!TagItem.isEditing ? flipcard(TagItem) : null"
+          (textareaValueChange)="onTextareaValueChange($event)"
         ></app-selection>
 
         <form *ngIf="save" (submit)="saveEdit(TagItem)">
