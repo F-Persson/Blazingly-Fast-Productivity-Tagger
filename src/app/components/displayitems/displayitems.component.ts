@@ -27,7 +27,7 @@ export class DisplayitemsComponent {
 
 
   flipcard(TagItem: TagItem) {
-    console.log("flipping item-" + TagItem.id);
+    console.log("flipping item: " + TagItem.id);
     TagItem.isFlipped = !TagItem.isFlipped;
     setTimeout(() => {
       this.updateItem(TagItem);
@@ -90,8 +90,6 @@ export class DisplayitemsComponent {
   }
 
   async updateItem(TagItem: TagItem) {
-    console.log('Updated item: ' + TagItem.id);
-    console.log("New selection: " + TagItem.selection);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
       Selection: TagItem.selection,
@@ -99,3 +97,17 @@ export class DisplayitemsComponent {
     });
   }
 }
+
+
+// since I can't comment out this code in the html file, I'll just put it here
+
+// <app-icon
+// [className]="'faTrash'"
+// [icon]="!TagItem.isEditing ? faEdit : faCheck"
+// [color]="'rgb(17, 17, 95)'"
+// (click)="
+//   !TagItem.isEditing
+//     ? editSelection(TagItem)
+//     : this.selectionComponent.edited(TagItem)
+// "
+// ></app-icon>
