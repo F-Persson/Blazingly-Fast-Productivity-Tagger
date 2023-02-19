@@ -1,6 +1,10 @@
 <div class="maincontainer">
   <div *ngFor="let TagItem of tagItems">
-    <div class="items" id="item-{{ TagItem.id }}">
+    <div
+      class="items"
+      id="item-{{ TagItem.id }}"
+      [ngClass]="{ flipcard: TagItem.isFlipped }"
+    >
       <div class="front">
         <app-icon
           [className]="'faTrash'"

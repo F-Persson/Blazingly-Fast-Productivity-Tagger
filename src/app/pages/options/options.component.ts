@@ -42,6 +42,8 @@ export class OptionsComponent {
         selection: result.selection,
         url: result.url,
         title: result.title,
+        isEditing: result.isEditing,
+        isFlipped: result.isFlipped,
       };
     });
     console.log('Search results: ', this.searchResults);

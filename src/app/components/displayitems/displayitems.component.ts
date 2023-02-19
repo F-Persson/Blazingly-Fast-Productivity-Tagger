@@ -19,11 +19,15 @@ export class DisplayitemsComponent {
   faTrash = faTrash;
   faEdit = faEdit;
 
+
   flipcard(TagItem: TagItem) {
     console.log("flipping item-" + TagItem.id);
-    const item = document.getElementById("item-" + TagItem.id)
-    item?.classList.toggle("flipcard");
+    TagItem.isFlipped = !TagItem.isFlipped;
+    setTimeout(() => {
+      this.updateItem(TagItem);
+    }, 500);
   }
+
 
   async saveEdit(TagItem: TagItem) {
     console.log('Updated item: ' + TagItem.id);
@@ -82,6 +86,7 @@ export class DisplayitemsComponent {
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
       Selection: TagItem.selection,
+      isFlipped: TagItem.isFlipped,
     });
   }
 }

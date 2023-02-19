@@ -19,10 +19,21 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   
   // add the search bar to the top of the options page
 
+  
+  // add isEditing and isFlipped to TagItem
+  
+  // add flipfunction to TagItem, the angular way. 
+  
   // TODO
 
-  // add isEditing and isFlipped to TagItem
+  // Add function to edit icon to edit the selection
 
-  // add flipfunction to TagItem, the angular way. Also to flipall
+  
+  // Add button to flip all
+  
+  // add dropdown to show all Tags and group by tags
+  
+  // Add post requests and get requests to the backend
+  // To share the TagItem with all users in a public domain
 
-  // add Tags and group by tags
+  // instead of button in the options page - show how many times it has been tagged and upvoted or downvoted

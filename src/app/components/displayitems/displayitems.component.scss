@@ -18,7 +18,7 @@
   background-color: #30475e;
   color: white;
   transform-style: preserve-3d;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 
 .front {
@@ -47,7 +47,7 @@
 
 .flipcard {
   transform: rotateY(180deg);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .button {
