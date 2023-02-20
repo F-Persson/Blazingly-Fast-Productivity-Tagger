@@ -1,71 +1,77 @@
 <div class="maincontainer">
-  <div *ngFor="let TagItem of tagItems">
-    <div class="items" id="item-{{ TagItem.id }}">
-      <div class="front">
-        <app-icon
-          [className]="'faTrash'"
-          *ngIf="!save"
-          [icon]="faTrash"
-          [color]="'red'"
-          (click)="deleteItem(TagItem)"
-        ></app-icon>
+  <div
+    *ngFor="let TagItem of tagItems"
+    class="items"
+    id="item-{{ TagItem.id }}"
+    [ngClass]="{ flipcard: TagItem.isFlipped }"
+  >
+    <div class="front">
+      <app-icon
+        [className]="'faTrash'"
+        *ngIf="!save"
+        [icon]="faTrash"
+        [color]="'red'"
+        (click)="deleteItem(TagItem)"
+      ></app-icon>
 
-        <app-title [title]="shorten(TagItem.title, 75)" [url]="TagItem.url">
-        </app-title>
+      <app-title [title]="shorten(TagItem.title, 75)" [url]="TagItem.url">
+      </app-title>
 
-        <app-selection
-          [selection]="shorten(TagItem.selection, 100)"
-          (click)="flipcard(TagItem)"
-        ></app-selection>
+      <app-selection
+        [TagItem]="TagItem"
+        (click)="flipcard(TagItem)"
+      ></app-selection>
 
-        <app-tags
-          [tagItem]="TagItem"
-          (tagAdded)="onTagAdded($event)"
-        ></app-tags>
+      <app-tags [tagItem]="TagItem" (tagAdded)="onTagAdded($event)"></app-tags>
 
-        <div *ngIf="TagItem.tags && TagItem.tags.length > 0">
-          <div class="two-column-list">
-            <div
-              *ngFor="let tag of TagItem.tags"
-              class="list-item"
-              style="display: inline-flex"
-            >
-              <span style="padding: 2px; border-radius: 5px">{{ tag }}</span>
+      <div *ngIf="TagItem.tags && TagItem.tags.length > 0">
+        <div class="two-column-list">
+          <div
+            *ngFor="let tag of TagItem.tags"
+            class="list-item"
+            style="display: inline-flex"
+          >
+            <span style="padding: 2px; border-radius: 5px">{{ tag }}</span>
 
-              <app-icon
-                [className]="'faTimes'"
-                [icon]="faTimes"
-                [color]="'red'"
-                (click)="deleteTag(TagItem, tag)"
-              ></app-icon>
-            </div>
+            <app-icon
+              [className]="'faTimes'"
+              [icon]="faTimes"
+              [color]="'red'"
+              (click)="deleteTag(TagItem, tag)"
+            ></app-icon>
           </div>
         </div>
-
-        <form *ngIf="save" (submit)="onSubmit(TagItem, save)">
-          <input type="submit" [value]="'save'" class="button" />
-        </form>
       </div>
 
-      <div class="back">
-        <app-icon
-          [className]="'faTrash'"
-          [icon]="faEdit"
-          [color]="'rgb(17, 17, 95)'"
-          (click)="editSelection(TagItem)"
-        ></app-icon>
+      <form *ngIf="save" (submit)="onSubmit(TagItem, save)">
+        <input type="submit" [value]="'save'" class="button" />
+      </form>
+    </div>
 
-        <app-title [title]="TagItem.title" [url]="TagItem.url"> </app-title>
+    <div class="back">
+      <app-icon
+        [className]="'faTrash'"
+        [icon]="!TagItem.isEditing ? faEdit : faCheck"
+        [color]="'rgb(17, 17, 95)'"
+        (click)="
+          !TagItem.isEditing
+            ? editSelection(TagItem)
+            : this.selectionComponent.edited(TagItem)
+        "
+      ></app-icon>
 
-        <app-selection
-          [selection]="TagItem.selection"
-          (click)="flipcard(TagItem)"
-        ></app-selection>
+      <app-title [title]="TagItem.title" [url]="TagItem.url"> </app-title>
 
-        <form *ngIf="save" (submit)="saveEdit(TagItem)">
-          <input type="submit" [value]="'Save'" class="button" />
-        </form>
-      </div>
+      <app-selection
+        #selectionComponent
+        [TagItem]="TagItem"
+        (click)="!TagItem.isEditing ? flipcard(TagItem) : null"
+        (textEdited)="onEdited($event)"
+      ></app-selection>
+
+      <form *ngIf="save" (submit)="saveEdit(TagItem)">
+        <input type="submit" [value]="'Save'" class="button" />
+      </form>
     </div>
   </div>
 </div>

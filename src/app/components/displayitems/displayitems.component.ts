@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { db, TagItem } from 'src/app/db';
-import { faTimes, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { SelectionComponent } from '../selection/selection.component';
+
 
 
 @Component({
@@ -11,35 +13,48 @@ import { faTimes, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 export class DisplayitemsComponent {
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
+  @ViewChild("SelectionComponent") selectionComponent!: SelectionComponent;
 
-  editing = false;
 
 
   faTimes = faTimes;
   faTrash = faTrash;
   faEdit = faEdit;
+  faCheck = faCheck;
+
+
+  onEdited(TagItem: TagItem) {
+    console.log("Updating selection");
+    this.updateItem(TagItem);
+  }
+
 
   flipcard(TagItem: TagItem) {
-    console.log("flipping item-" + TagItem.id);
-    const item = document.getElementById("item-" + TagItem.id)
-    item?.classList.toggle("flipcard");
+    console.log("flipping item: " + TagItem.id);
+    TagItem.isFlipped = !TagItem.isFlipped;
+    setTimeout(() => {
+      this.updateItem(TagItem);
+    }, 500);
   }
+
+
+  async editSelection(TagItem: TagItem) {
+    TagItem.isEditing = !TagItem.isEditing;
+  }
+
 
   async saveEdit(TagItem: TagItem) {
     console.log('Updated item: ' + TagItem.id);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.selection,
     });
-    this.editing = this.editing!;
   }
 
-  async editSelection(TagItem: TagItem) {
-    this.editing = !this.editing;
-  }
 
   onTagAdded(tagItem: TagItem) {
     this.updateItem(tagItem);
   }
+
 
   shorten(str: string, len: number): string {
     if (str.length <= len) {
@@ -78,10 +93,10 @@ export class DisplayitemsComponent {
   }
 
   async updateItem(TagItem: TagItem) {
-    console.log('Updated item: ' + TagItem.id);
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
-      Selection: TagItem.selection,
+      selection: TagItem.selection,
+      isFlipped: TagItem.isFlipped,
     });
   }
 }

@@ -1,3 +1,19 @@
-<div class="selection">
-  {{ selection }}
-</div>
+<div
+  class="selection"
+  *ngIf="!TagItem.isEditing"
+  [innerText]="
+    TagItem.isFlipped ? TagItem.selection : shorten(TagItem.selection, 100)
+  "
+></div>
+
+<textarea
+  *ngIf="TagItem.isEditing"
+  name="text"
+  rows="8"
+  cols="40"
+  id="edit{{ TagItem.id }}"
+  placeholder="{{ TagItem.selection }}"
+  [(ngModel)]="textareaValue"
+>
+></textarea
+>
