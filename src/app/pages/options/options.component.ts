@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { liveQuery } from 'dexie';
-import { db, TagItem } from 'src/app/db';
+import { DbService, TagItem } from 'src/app/db.service';
 
 
 @Component({
@@ -9,6 +9,11 @@ import { db, TagItem } from 'src/app/db';
   styleUrls: ['./options.component.scss'],
 })
 export class OptionsComponent {
+  constructor(private db: DbService) {
+    liveQuery(() => db.TagItem.toArray()).subscribe((tagItems: TagItem[]) => {
+      this.tagItems = tagItems;
+    });
+  }
   save: boolean = false;
   tagItems: TagItem[] = [];
   searchResults: TagItem[] = [];
@@ -20,16 +25,11 @@ export class OptionsComponent {
     this.tagItems.forEach((item: TagItem) => {
       item.isFlipped = this.flipall;
       setTimeout(() => {
-        this.updateItem(item);
+        this.db.updateItem(item);
       }, 500);
     });
   }
 
-  async updateItem(TagItem: TagItem) {
-    await db.TagItem.update(TagItem.id, {
-      isFlipped: TagItem.isFlipped,
-    });
-  }
 
   async searchOnChange(event: any) {
     const searchTerm = event.target.value.trim();
@@ -42,7 +42,7 @@ export class OptionsComponent {
     this.hasSearchResults = true;
 
 
-    const allItems = await db.TagItem.toArray();
+    const allItems = await this.db.TagItem.toArray();
     const results = allItems.filter((item: TagItem) => {
       return item.url.toLowerCase().includes(searchTerm.toLowerCase())
         || item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -61,14 +61,11 @@ export class OptionsComponent {
         title: result.title,
         isEditing: result.isEditing,
         isFlipped: result.isFlipped,
+        isShowing: result.isShowing,
       };
     });
     console.log('Search results: ', this.searchResults);
   }
 
-  constructor() {
-    liveQuery(() => db.TagItem.toArray()).subscribe((tagItems: TagItem[]) => {
-      this.tagItems = tagItems;
-    });
-  }
+
 }

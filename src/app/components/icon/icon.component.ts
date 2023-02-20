@@ -1,5 +1,5 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { TagItem } from 'src/app/db';
+import { Component, Input } from '@angular/core';
+import { TagItem } from 'src/app/db.service';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { db, TagItem } from 'src/app/db';
 import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { SelectionComponent } from '../selection/selection.component';
+import { DbService, TagItem } from 'src/app/db.service';
 
 
 
@@ -11,6 +11,8 @@ import { SelectionComponent } from '../selection/selection.component';
   styleUrls: ['./displayitems.component.scss'],
 })
 export class DisplayitemsComponent {
+  constructor(private db: DbService) { }
+
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
   @ViewChild("SelectionComponent") selectionComponent!: SelectionComponent;
@@ -25,7 +27,7 @@ export class DisplayitemsComponent {
 
   onEdited(TagItem: TagItem) {
     console.log("Updating selection");
-    this.updateItem(TagItem);
+    this.db.updateItem(TagItem);
   }
 
 
@@ -33,7 +35,7 @@ export class DisplayitemsComponent {
     console.log("flipping item: " + TagItem.id);
     TagItem.isFlipped = !TagItem.isFlipped;
     setTimeout(() => {
-      this.updateItem(TagItem);
+      this.db.updateItem(TagItem);
     }, 500);
   }
 
@@ -45,14 +47,14 @@ export class DisplayitemsComponent {
 
   async saveEdit(TagItem: TagItem) {
     console.log('Updated item: ' + TagItem.id);
-    await db.TagItem.update(TagItem.id, {
+    await this.db.TagItem.update(TagItem.id, {
       tags: TagItem.selection,
     });
   }
 
 
   onTagAdded(tagItem: TagItem) {
-    this.updateItem(tagItem);
+    this.db.updateItem(tagItem);
   }
 
 
@@ -67,7 +69,7 @@ export class DisplayitemsComponent {
   deleteTag(TagItem: TagItem, tag: string) {
     console.log('Deleting tag ' + tag + ' from item ' + TagItem.id);
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
-    this.updateItem(TagItem);
+    this.db.updateItem(TagItem);
   }
 
   async onSubmit(TagItem: TagItem, save: boolean) {
@@ -77,26 +79,18 @@ export class DisplayitemsComponent {
       window.close();
     } else {
       console.log('updating item ' + TagItem.id);
-      await this.updateItem(TagItem);
+      await this.db.updateItem(TagItem);
     }
   }
 
   async createItem(TagItem: TagItem) {
     console.log('Creating item with id: ' + TagItem.id);
-    await db.TagItem.add(TagItem, TagItem.id);
+    await this.db.TagItem.add(TagItem, TagItem.id);
     return;
   }
 
   async deleteItem(TagItem: TagItem) {
     console.log('Deleted item created at: ' + TagItem.time);
-    await db.TagItem.delete(TagItem.id);
-  }
-
-  async updateItem(TagItem: TagItem) {
-    await db.TagItem.update(TagItem.id, {
-      tags: TagItem.tags,
-      selection: TagItem.selection,
-      isFlipped: TagItem.isFlipped,
-    });
+    await this.db.TagItem.delete(TagItem.id);
   }
 }

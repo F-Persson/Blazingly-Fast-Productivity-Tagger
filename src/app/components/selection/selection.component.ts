@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TagItem } from 'src/app/db';
+import { TagItem } from 'src/app/db.service';
 import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
