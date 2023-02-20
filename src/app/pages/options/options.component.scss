@@ -24,11 +24,16 @@
   margin-bottom: 1px;
 }
 
+.search-container {
+  text-align: center;
+}
+
 .search {
   background-color: #30475e;
   color: white;
   font-weight: bold;
-  margin: 15px;
+  margin: 15px auto;
+  display: block;
   border-radius: 5px;
   font-size: 14px;
   border: 2px solid steelblue;

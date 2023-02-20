@@ -15,7 +15,7 @@ export class SelectionComponent {
   textareaValue!: string;
 
   ngOnInit() {
-    this.textareaValue = "This doesn't work yet. Feel free to help me out! https://github.com/F-Persson/tagger"
+    this.textareaValue = this.TagItem.selection;
   }
 
 

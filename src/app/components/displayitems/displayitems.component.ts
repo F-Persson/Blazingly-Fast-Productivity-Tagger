@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { db, TagItem } from 'src/app/db';
 import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { SelectionComponent } from '../selection/selection.component';
 
 
 
@@ -12,6 +13,8 @@ import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-i
 export class DisplayitemsComponent {
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
+  @ViewChild("SelectionComponent") selectionComponent!: SelectionComponent;
+
 
 
   faTimes = faTimes;
@@ -21,7 +24,7 @@ export class DisplayitemsComponent {
 
 
   onEdited(TagItem: TagItem) {
-    console.log("This doesn't work yet. Feel free to help me out! https://github.com/F-Persson/tagger");
+    console.log("Updating selection");
     this.updateItem(TagItem);
   }
 
@@ -92,22 +95,8 @@ export class DisplayitemsComponent {
   async updateItem(TagItem: TagItem) {
     await db.TagItem.update(TagItem.id, {
       tags: TagItem.tags,
-      Selection: TagItem.selection,
+      selection: TagItem.selection,
       isFlipped: TagItem.isFlipped,
     });
   }
 }
-
-
-// since I can't comment out this code in the html file, I'll just put it here
-
-// <app-icon
-// [className]="'faTrash'"
-// [icon]="!TagItem.isEditing ? faEdit : faCheck"
-// [color]="'rgb(17, 17, 95)'"
-// (click)="
-//   !TagItem.isEditing
-//     ? editSelection(TagItem)
-//     : this.selectionComponent.edited(TagItem)
-// "
-// ></app-icon>

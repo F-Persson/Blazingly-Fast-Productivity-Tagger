@@ -29,6 +29,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // Add function to faEdit icon to save the selection
   // Works to edit the selection but not to save it to the database
   // ## Does not work yet - skip for now
+  // ## It was a typo!!!!!!!!! - it works now
   
   // TODO
 
