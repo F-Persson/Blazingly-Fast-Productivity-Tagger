@@ -31,10 +31,15 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // ## Does not work yet - skip for now
   // ## It was a typo!!!!!!!!! - it works now
   
-  // TODO
-
+  
   // Add topbar to options page with searchbox, flip all button
   //  and dropdown to show all tags grouped by tag 
+  
+  // TODO
+
+  // Add todo list in "All tags"
+
+  // Make the "Your tags" dropdown able to select certain tags. Grey out the not selected tags
   
   // Add post requests and get requests to the backend
   // To share the TagItem with all users in a public domain
