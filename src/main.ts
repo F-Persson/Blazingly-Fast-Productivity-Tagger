@@ -18,6 +18,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // re-use the save-tag component to use both in popup and options page
   
   // add the search bar to the top of the options page
+  
+  // implement the search function
 
   
   // add isEditing and isFlipped to TagItem
@@ -37,6 +39,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   
   // TODO
 
+
   // Add todo list in "All tags"
 
   // Make the "Your tags" dropdown able to select certain tags. Grey out the not selected tags
@@ -45,3 +48,4 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // To share the TagItem with all users in a public domain
 
   // instead of button in the options page - show how many times it has been tagged and upvoted or downvoted
+
