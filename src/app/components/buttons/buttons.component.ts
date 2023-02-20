@@ -17,11 +17,12 @@ export class ButtonsComponent {
   async allTags() {
     const allItems = await db.TagItem.toArray();
     const allTags = allItems.map((item: TagItem) => item.tags).flat();
+    allTags.sort();
     const counts = allTags.reduce((acc: any, curr: any) => {
       acc[curr] = (acc[curr] || 0) + 1;
       return acc;
     }, {});
-    console.log(counts); // Logs correct object
+    console.log(counts); // Logs correct but 4 times
     const tagCounts = Object.entries(counts).map(([tag, count]) => ({ tag, count }));
     return tagCounts;
   }
