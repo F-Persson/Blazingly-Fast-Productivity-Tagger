@@ -2,7 +2,8 @@
   {{ text }}
   <div class="dropdown-content">
     <div class="taglist" *ngFor="let tag of alltags | async">
-      {{ tag }}
+      <!-- <div class="taglist" *ngFor="let tag of alltags | async"> -->
+      {{ tag.tag }}: {{ tag.count }}
     </div>
   </div>
 </div>
