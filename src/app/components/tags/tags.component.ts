@@ -14,7 +14,11 @@ export class TagsComponent {
   addTag(event: Event) {
     event.preventDefault();
     const inputElement = document.getElementById(`tags${this.tagItem.id}`) as HTMLInputElement;
-    const tag = inputElement.value.trim();
+    const tag = inputElement.value.trim().toLowerCase();
+    if (this.tagItem.tags?.includes(tag)) {
+      inputElement.value = '';
+      return;
+    }
     this.tagItem.tags?.push(tag);
     inputElement.value = '';
     this.tagAdded.emit(this.tagItem);

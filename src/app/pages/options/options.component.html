@@ -1,11 +1,21 @@
-<div class="topbar">
-  <div class="search-container">
+<div class="page">
+  <div class="topbar-container">
     <input
       type="search"
       class="search"
       placeholder="Search"
       (input)="searchOnChange($event)"
     />
+
+    <app-buttons
+      [isDropdown]="false"
+      [text]="'Flip'"
+      (click)="flipAll()"
+    ></app-buttons>
+
+    <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
+    <app-buttons [isDropdown]="false" [text]="'All tags'"></app-buttons>
+    <app-buttons [isDropdown]="false" [text]="'About'"></app-buttons>
   </div>
 
   <div class="app-container">

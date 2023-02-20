@@ -13,6 +13,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { TitleComponent } from './components/title/title.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { ButtonsComponent } from './components/buttons/buttons.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     TitleComponent,
     SelectionComponent,
     TagsComponent,
+    ButtonsComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,23 @@ export class OptionsComponent {
   tagItems: TagItem[] = [];
   searchResults: TagItem[] = [];
   hasSearchResults = false;
+  flipall: boolean = false;
+
+  flipAll() {
+    this.flipall = !this.flipall;
+    this.tagItems.forEach((item: TagItem) => {
+      item.isFlipped = this.flipall;
+      setTimeout(() => {
+        this.updateItem(item);
+      }, 500);
+    });
+  }
+
+  async updateItem(TagItem: TagItem) {
+    await db.TagItem.update(TagItem.id, {
+      isFlipped: TagItem.isFlipped,
+    });
+  }
 
   async searchOnChange(event: any) {
     const searchTerm = event.target.value.trim();

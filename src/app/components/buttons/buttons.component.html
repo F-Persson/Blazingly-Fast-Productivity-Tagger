@@ -1,0 +1,10 @@
+<div *ngIf="isDropdown" class="button-dropdown">
+  {{ text }}
+  <div class="dropdown-content">
+    <div class="taglist" *ngFor="let tag of alltags | async">
+      {{ tag }}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isDropdown" class="button">{{ text }}</div>
