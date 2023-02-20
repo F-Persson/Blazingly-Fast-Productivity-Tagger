@@ -1,10 +1,20 @@
 <div *ngIf="isDropdown" class="button-dropdown">
   {{ text }}
   <div class="dropdown-content">
-    <div class="taglist" *ngFor="let tag of alltags | async">
-      {{ tag.tag }}: {{ tag.count }}
+    <div *ngFor="let tag of alltags | async">
+      <div *ngIf="tag.showTag" class="taglist" (click)="showItem(tag)">
+        {{ tag.tag }}: {{ tag.count }}
+      </div>
+
+      <div
+        *ngIf="!tag.showTag"
+        (click)="showItem(tag)"
+        class="taglist"
+        [ngStyle]="{ 'Text-Decoration': 'line-through' }"
+      >
+        {{ tag.tag }}: {{ tag.count }}
+      </div>
     </div>
   </div>
 </div>
-
 <div *ngIf="!isDropdown" class="button">{{ text }}</div>
