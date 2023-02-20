@@ -6,13 +6,8 @@
         {{ tag.tag }}: {{ tag.count }}
       </div>
 
-      <div
-        *ngIf="!tag.showTag"
-        (click)="showItem(tag)"
-        class="taglist"
-        [ngStyle]="{ 'Text-Decoration': 'line-through' }"
-      >
-        {{ tag.tag }}: {{ tag.count }}
+      <div *ngIf="!tag.showTag" (click)="showItem(tag)" class="taglist">
+        <span class="line-through"> {{ tag.tag }}: {{ tag.count }} </span>
       </div>
     </div>
   </div>

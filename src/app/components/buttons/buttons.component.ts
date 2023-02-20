@@ -22,23 +22,45 @@ export class ButtonsComponent {
 
   dropDown: boolean = false;
 
+  allOrNone: boolean = false;
 
-
+  async toggleAll(itemOfTag: Tag) {
+    if (itemOfTag.tag === 'Hide All') {
+      itemOfTag.tag = 'Show All';
+      (await this.alltags).forEach((tag: Tag) => {
+        tag.showTag = false;
+      });
+      const allItems = await this.db.TagItem.toArray();
+      allItems.forEach((tagItem: TagItem) => {
+        tagItem.isShowing = false;
+      });
+      this.db.TagItem.bulkPut(allItems);
+    }
+    else if (itemOfTag.tag === 'Show All') {
+      itemOfTag.tag = 'Hide All';
+      (await this.alltags).forEach((tag: Tag) => {
+        tag.showTag = true;
+      });
+      const allItems = await this.db.TagItem.toArray();
+      allItems.forEach((tagItem: TagItem) => {
+        tagItem.isShowing = true;
+      });
+      this.db.TagItem.bulkPut(allItems);
+    }
+  }
 
 
   async showItem(itemOfTag: Tag) {
-    console.log('showing tag: ' + itemOfTag.showTag);
-    itemOfTag.showTag = !itemOfTag.showTag;
-    console.log('showing tag: ' + itemOfTag.showTag);
-    const allItems = await this.db.TagItem.toArray();
-    if (itemOfTag.tag === 'All') {
-      allItems.forEach((tagItem: TagItem) => {
-        tagItem.isShowing = !tagItem.isShowing;
-      });
-      this.db.TagItem.bulkPut(allItems);
+    // const allItems = await this.db.TagItem.toArray();
+    if (itemOfTag.tag === 'Hide All' || itemOfTag.tag === 'Show All') {
+      this.toggleAll(itemOfTag);
       return;
     }
     else {
+      // Find all items with this tag and toggle their showTag property
+
+      itemOfTag.showTag = !itemOfTag.showTag;
+      const allItems = await this.db.TagItem.toArray();
       const results = allItems.filter((item: TagItem) => {
         return item.tags?.some((matchtag: string) => itemOfTag.tag == matchtag);
       });
@@ -63,8 +85,11 @@ export class ButtonsComponent {
     }, {});
     console.log(counts);
     const tagCounts = Object.entries(counts).map(([tag, count]) => ({ tag, count }));
-    counts['All'] = tagCount;
-    tagCounts.unshift({ tag: 'All', count: tagCount });
+
+    // get unique tag counts
+
+    counts['Hide All'] = tagCount;
+    tagCounts.unshift({ tag: 'Hide All', count: tagCount });
     return tagCounts.map((tagCount: any) => ({ ...tagCount, showTag: true }));
   }
 }
