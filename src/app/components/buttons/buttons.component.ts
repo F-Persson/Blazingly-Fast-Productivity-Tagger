@@ -14,7 +14,8 @@ export interface Tag {
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.scss']
 })
-export class ButtonsComponent {
+
+export class ButtonsComponent implements Tag {
   constructor(private db: DbService) { }
   @Input() text!: string;
   @Input() isDropdown!: boolean;
@@ -23,52 +24,70 @@ export class ButtonsComponent {
   dropDown: boolean = false;
 
   allOrNone: boolean = false;
+  tag: string = '';
+  count: number = 0;
+  showTag: boolean = true;
+  showItems: string[] = [];
 
-  async toggleAll(itemOfTag: Tag) {
-    if (itemOfTag.tag === 'Hide All') {
-      itemOfTag.tag = 'Show All';
-      (await this.alltags).forEach((tag: Tag) => {
-        tag.showTag = false;
-      });
-      const allItems = await this.db.TagItem.toArray();
-      allItems.forEach((tagItem: TagItem) => {
-        tagItem.isShowing = false;
-      });
-      this.db.TagItem.bulkPut(allItems);
+
+
+
+
+  async hideItem(itemOfTag: Tag) {
+    console.log("in hideitem");
+    if (itemOfTag.tag === 'All') {
+      return;
     }
-    else if (itemOfTag.tag === 'Show All') {
-      itemOfTag.tag = 'Hide All';
-      (await this.alltags).forEach((tag: Tag) => {
-        tag.showTag = true;
-      });
-      const allItems = await this.db.TagItem.toArray();
-      allItems.forEach((tagItem: TagItem) => {
-        tagItem.isShowing = true;
-      });
-      this.db.TagItem.bulkPut(allItems);
+    else {
+      itemOfTag.showTag = false;
+      this.showItems = this.showItems.filter((tag: string) => tag !== itemOfTag.tag); // remove tag from showItems
+      this.showTheseItems(this.showItems);
     }
   }
 
 
-  async showItem(itemOfTag: Tag, value: string) {
-    // const allItems = await this.db.TagItem.toArray();
-    if (itemOfTag.tag === 'Hide All' || itemOfTag.tag === 'Show All') {
-      this.toggleAll(itemOfTag);
+  async showItem(itemOfTag: Tag) {
+    console.log("in showitem");
+
+    const allItems = await this.db.TagItem.toArray();
+
+    if (itemOfTag.tag === 'All') {
+      (await this.alltags).forEach((tag: Tag) => {
+        tag.showTag = false;
+      });
+      allItems.forEach((tagItem: TagItem) => {
+        tagItem.isShowing = true;
+      });
+      this.db.TagItem.bulkPut(allItems);
       return;
     }
     else {
-      // Find all items with this tag and toggle their showTag property
-
-      itemOfTag.showTag = !itemOfTag.showTag;
-      const allItems = await this.db.TagItem.toArray();
-      const results = allItems.filter((item: TagItem) => {
-        return item.tags?.some((matchtag: string) => itemOfTag.tag == matchtag);
-      });
-      results.forEach((tagItem: TagItem) => {
-        tagItem.isShowing = !tagItem.isShowing;
-      });
-      this.db.TagItem.bulkPut(results);
+      itemOfTag.showTag = true; // Show css in dropdown
+      this.showItems.push(itemOfTag.tag); // add tag to showItems
+      this.showTheseItems(this.showItems);
     }
+  }
+
+  showTheseItems(showItems: string[]) {
+    const allItems = this.db.TagItem.toArray();
+    allItems.then(async (items: TagItem[]) => {
+      if (this.showItems.length === 0) {  // if no tags are selected, show all
+        (await allItems).forEach((tagItem: TagItem) => {
+          tagItem.isShowing = true;
+        });
+        this.db.TagItem.bulkPut(await allItems);
+        return;
+      }
+      items.forEach((tagItem: TagItem) => { // if tags are selected, show only those
+        if (showItems.some((matchtag: string) => tagItem.tags?.some((itemtag: string) => itemtag === matchtag))) {
+          tagItem.isShowing = true;
+        }
+        else { // if no tags are selected, hide all
+          tagItem.isShowing = false;
+        }
+      });
+      this.db.TagItem.bulkPut(items);
+    });
   }
 
 
@@ -79,17 +98,14 @@ export class ButtonsComponent {
     const allTags = allItems.map((item: TagItem) => item.tags).flat();
     const tagCount = allTags.length;
     allTags.sort();
+    const uniqueTags = new Set(allTags).size
     const counts = allTags.reduce((acc: any, curr: any) => {
       acc[curr] = (acc[curr] || 0) + 1;
       return acc;
     }, {});
-    console.log(counts);
     const tagCounts = Object.entries(counts).map(([tag, count]) => ({ tag, count }));
-
-    // get unique tag counts
-
-    counts['Hide All'] = tagCount;
-    tagCounts.unshift({ tag: 'Hide All', count: tagCount });
-    return tagCounts.map((tagCount: any) => ({ ...tagCount, showTag: true }));
+    counts['All'] = uniqueTags;
+    tagCounts.unshift({ tag: 'All', count: uniqueTags });
+    return tagCounts.map((tagCount: any) => ({ ...tagCount, showTag: false }));
   }
 }
