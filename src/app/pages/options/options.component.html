@@ -15,7 +15,11 @@
 
     <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
     <app-buttons [isDropdown]="false" [text]="'All tags'"></app-buttons>
-    <app-buttons [isDropdown]="false" [text]="'About'"></app-buttons>
+    <app-buttons
+      [isDropdown]="false"
+      [text]="'About'"
+      routerLink="/about"
+    ></app-buttons>
   </div>
 
   <div class="app-container">
