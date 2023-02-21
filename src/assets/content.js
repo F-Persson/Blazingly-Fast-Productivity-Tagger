@@ -8,10 +8,15 @@ document.addEventListener('mousedown', function (e) {
         openPopup(selectedText, url, title);
     };
     if (e.ctrlKey && e.button === 2) {
-        var selectedText = getSelectedText();
-        sendMessageToPopup(selectedText);
+        openOptionsTab();
     };
 });
+
+function openOptionsTab() {
+    chrome.runtime.sendMessage({
+        action: "openOptionsTab",
+    });
+}
 
 // Send message to background.js to open popup
 function openPopup(selectedText, url, title) {

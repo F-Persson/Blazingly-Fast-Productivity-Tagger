@@ -50,7 +50,7 @@ export class ButtonsComponent {
   }
 
 
-  async showItem(itemOfTag: Tag) {
+  async showItem(itemOfTag: Tag, value: string) {
     // const allItems = await this.db.TagItem.toArray();
     if (itemOfTag.tag === 'Hide All' || itemOfTag.tag === 'Show All') {
       this.toggleAll(itemOfTag);

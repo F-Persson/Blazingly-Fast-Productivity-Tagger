@@ -3,11 +3,18 @@ chrome.runtime.onMessage.addListener(
         if (request.action === "createWindow") {
             openPopup(request.selectedText, request.url, request.title, request.html);
         };
-        if (request.action === "msgToBackground") {
-            sendResponse({ farewell: "Msg received in background script" });
+        if (request.action === "openOptionsTab") {
+            openOptionsTab();
         };
     }
 );
+
+// open options tab
+function openOptionsTab() {
+    chrome.tabs.create({
+        url: "index.html#options",
+    });
+};
 
 
 //openPopup;

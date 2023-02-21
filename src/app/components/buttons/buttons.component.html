@@ -2,11 +2,11 @@
   {{ text }}
   <div class="dropdown-content">
     <div *ngFor="let tag of alltags | async">
-      <div *ngIf="tag.showTag" class="taglist" (click)="showItem(tag)">
+      <div *ngIf="tag.showTag" class="taglist" (click)="showItem(tag, 'hide')">
         {{ tag.tag }}: {{ tag.count }}
       </div>
 
-      <div *ngIf="!tag.showTag" (click)="showItem(tag)" class="taglist">
+      <div *ngIf="!tag.showTag" (click)="showItem(tag, 'show')" class="taglist">
         <span class="line-through"> {{ tag.tag }}: {{ tag.count }} </span>
       </div>
     </div>
