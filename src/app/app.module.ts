@@ -15,6 +15,7 @@ import { SelectionComponent } from './components/selection/selection.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { AboutComponent } from './pages/about/about.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     TagsComponent,
     ButtonsComponent,
     AboutComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

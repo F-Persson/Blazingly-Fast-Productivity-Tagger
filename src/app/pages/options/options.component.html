@@ -18,14 +18,17 @@
     <app-buttons
       [isDropdown]="false"
       [text]="'About'"
-      routerLink="/about"
+      (click)="goToAbout()"
     ></app-buttons>
   </div>
 
-  <div class="app-container">
+  <div class="app-container" *ngIf="!showAbout">
     <app-displayitems
       [tagItems]="hasSearchResults ? searchResults : tagItems"
       [save]="save"
     ></app-displayitems>
+  </div>
+  <div class="app-container" *ngIf="showAbout">
+    <app-displayitems [tagItems]="aboutItem" [save]="save"></app-displayitems>
   </div>
 </div>
