@@ -37,15 +37,18 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // Add topbar to options page with searchbox, flip all button
   //  and dropdown to show all tags grouped by tag 
   
+  // Make the "Your tags" dropdown able to select certain tags. Grey out the not selected tags
+  // not exactly like that but something like that
+  
   // TODO
 
 
+  // Instead of about page, add some items to the options page - now I have both
+
   // Add todo list in "All tags"
 
-  // Make the "Your tags" dropdown able to select certain tags. Grey out the not selected tags
-  
   // Add post requests and get requests to the backend
   // To share the TagItem with all users in a public domain
 
-  // instead of button in the options page - show how many times it has been tagged and upvoted or downvoted
 
+  // instead of the save button in the popup page, when in options page - show how many times it has been tagged and upvoted or downvoted

@@ -15,13 +15,20 @@
 
     <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
     <app-buttons [isDropdown]="false" [text]="'All tags'"></app-buttons>
-    <app-buttons [isDropdown]="false" [text]="'About'"></app-buttons>
+    <app-buttons
+      [isDropdown]="false"
+      [text]="'About'"
+      (click)="goToAbout()"
+    ></app-buttons>
   </div>
 
-  <div class="app-container">
+  <div class="app-container" *ngIf="!showAbout">
     <app-displayitems
       [tagItems]="hasSearchResults ? searchResults : tagItems"
       [save]="save"
     ></app-displayitems>
+  </div>
+  <div class="app-container" *ngIf="showAbout">
+    <app-displayitems [tagItems]="aboutItem" [save]="save"></app-displayitems>
   </div>
 </div>

@@ -3,8 +3,15 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow: auto;
-  height: 100%;
+  height: calc(100% - 10%); /* Subtract the height of the footer */
   align-content: flex-start;
+}
+
+.footer-container {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .items {

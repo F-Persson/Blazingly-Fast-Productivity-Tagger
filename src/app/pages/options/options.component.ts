@@ -19,6 +19,37 @@ export class OptionsComponent {
   searchResults: TagItem[] = [];
   hasSearchResults = false;
   flipall: boolean = false;
+  showAbout: boolean = false;
+
+  aboutItem: TagItem[] = [
+    {
+      title: "Hi, my name is Francis\nI'm a software developer",
+      selection: "This is my first Angular project. I created this extension to develop my software skills and to help me organize my bookmarks and notes. I hope you find it useful too.",
+      url: "https://fpersson.com",
+      id: 0,
+      tags: ["about", "contact", "help", "feedback"],
+      time: new Date().toLocaleString(),
+      isEditing: false,
+      isFlipped: false,
+      isShowing: true,
+    },
+    {
+      title: "Tagger 0.5 is beta open source",
+      selection: "TODO: Make backend in C# for saving and sharing your tagItems\A login option\nFor more info please see the github repo. You'll find my contact info at the bottom of this page.",
+      url: "https://github.com/F-Persson",
+      id: -1,
+      tags: ["Tagger", "Version 0.5", "Open Source", "feedback"],
+      time: new Date().toLocaleString(),
+      isEditing: false,
+      isFlipped: false,
+      isShowing: true,
+    }
+  ];
+
+
+  goToAbout() {
+    this.showAbout = !this.showAbout;
+  }
 
   flipAll() {
     this.flipall = !this.flipall;
