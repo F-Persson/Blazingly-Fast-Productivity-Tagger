@@ -40,12 +40,14 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   // Make the "Your tags" dropdown able to select certain tags. Grey out the not selected tags
   // not exactly like that but something like that
   
-  // TODO
-
-
+  
+  
   // Instead of about page, add some items to the options page - now I have both
-
+  
   // Add todo list in "All tags"
+  // Added it in about page instead
+  
+  // TODO
 
   // Add post requests and get requests to the backend
   // To share the TagItem with all users in a public domain
