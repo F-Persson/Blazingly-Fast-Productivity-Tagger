@@ -14,9 +14,6 @@
         "scripting",
         "tabs"
     ],
-    "action": {
-        "default_popup": "index.html#popup"
-    },
     "content_scripts": [
         {
             "matches": [
