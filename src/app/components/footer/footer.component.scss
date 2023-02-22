@@ -1,5 +1,22 @@
 .footer {
+  position: relative;
   z-index: 1;
   height: 10%;
   width: 100%;
+  padding-bottom: 50%;
+}
+
+.icon {
+  font-size: 26px;
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  left: 50%;
+  transform: translateX(-50%);
 }

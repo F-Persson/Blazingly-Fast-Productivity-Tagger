@@ -12,17 +12,21 @@ import { DbService, TagItem } from 'src/app/db.service';
 })
 export class DisplayitemsComponent {
   constructor(private db: DbService) { }
-
+  @Input() showFooter: boolean = false;
   @Input() tagItems?: TagItem[];
   @Input() save!: boolean;
   @ViewChild("SelectionComponent") selectionComponent!: SelectionComponent;
-
 
 
   faTimes = faTimes;
   faTrash = faTrash;
   faEdit = faEdit;
   faCheck = faCheck;
+  inAbout = false;
+
+  onShowAboutChange() {
+    this.inAbout = !this.inAbout;
+  }
 
 
   onEdited(TagItem: TagItem) {
