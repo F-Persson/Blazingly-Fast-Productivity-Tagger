@@ -2,6 +2,9 @@
 document.addEventListener('mousedown', function (e) {
     if (e.ctrlKey && e.button === 0) {
         let selectedText = getSelectedText();
+        if (selectedText === "") {
+            selectedText = "Click to edit";
+        }
         let url = window.location.href;
         let title = document.title;
         // let html = gethtml();
