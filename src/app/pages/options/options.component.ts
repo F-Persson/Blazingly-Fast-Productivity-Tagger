@@ -60,6 +60,28 @@ export class OptionsComponent {
     }
   ];
 
+  async exportItemsToJson() {
+    // get all items from db
+    const allItems = await this.db.TagItem.toArray();
+    // create a json string
+    const json = JSON.stringify(allItems);
+    // create a blob
+    const blob = new Blob([json], { type: 'application/json' });
+    // create a url
+    const url = window.URL.createObjectURL(blob);
+    // create a link
+    const link = document.createElement('a');
+    // set the link's href to the url
+    link.href = url;
+    link.download = 'tagger.json';
+    // click the link
+    link.click();
+    // remove the link
+    link.remove();
+    URL.revokeObjectURL(url);
+
+  }
+
   goToAbout() {
     this.showAbout = !this.showAbout;
   }
