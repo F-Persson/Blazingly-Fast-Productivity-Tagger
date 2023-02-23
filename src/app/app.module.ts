@@ -14,14 +14,12 @@ import { TitleComponent } from './components/title/title.component';
 import { SelectionComponent } from './components/selection/selection.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
-import { AboutComponent } from './pages/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },
   { path: 'options', component: OptionsComponent },
   { path: 'popup', component: PopupComponent },
-  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
@@ -36,7 +34,6 @@ const appRoutes: Routes = [
     SelectionComponent,
     TagsComponent,
     ButtonsComponent,
-    AboutComponent,
     FooterComponent,
   ],
   imports: [
