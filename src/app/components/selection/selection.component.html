@@ -1,9 +1,7 @@
 <div
   class="selection"
   *ngIf="!TagItem.isEditing"
-  [innerText]="
-    TagItem.isFlipped ? TagItem.selection : shorten(TagItem.selection, 100)
-  "
+  [innerText]="TagItem.isFlipped ? TagItem.selection : TagItem.metaDescription"
 ></div>
 
 <textarea

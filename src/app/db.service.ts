@@ -11,6 +11,7 @@ export interface TagItem {
   isEditing: boolean;
   isFlipped: boolean;
   isShowing: boolean;
+  metaDescription?: string;
 }
 
 
@@ -23,7 +24,7 @@ export class DbService extends Dexie {
   constructor() {
     super("ngdexieliveQuery");
     this.version(1).stores({
-      TagItem: 'id,tags,time,selection,url,title,isEditing,isFlipped, isShowing'
+      TagItem: 'id,tags,time,selection,url,title,isEditing,isFlipped,isShowing,metaDescription'
     });
     this.TagItem = this.table('TagItem');
   }
