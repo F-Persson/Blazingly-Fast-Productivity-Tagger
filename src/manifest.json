@@ -1,8 +1,9 @@
 {
     "name": "Tagger",
-    "description": "Tagger",
+    "description": "Save notes and bookmarks",
     "version": "1.0",
     "manifest_version": 3,
+    "author": "Francis P",
     "background": {
         "service_worker": "assets/background.js"
     },
