@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TagItem } from 'src/app/db.service';
-import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-selection',
@@ -10,7 +9,6 @@ import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-i
 export class SelectionComponent {
   @Input() TagItem!: TagItem;
   @Output() textEdited = new EventEmitter<TagItem>();
-  faCheck = faCheck;
 
   textareaValue!: string;
 
