@@ -10,6 +10,8 @@ document.addEventListener('mousedown', function (e) {
         let metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
             metaDescription = metaDescription.getAttribute("content");
+        } else {
+            metaDescription = selectedText;
         }
         // let html = gethtml();
         openPopup(selectedText, url, title, metaDescription);
