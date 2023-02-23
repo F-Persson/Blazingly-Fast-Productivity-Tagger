@@ -40,7 +40,10 @@ To access your bookmarks and notes, press "ctrl + right mouse click".
 
 ## TODO
 
-### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
-### Make login possible to save your tags
-### sort tags by date
-### In options page - show how many times it has been tagged and upvoted or downvoted
+#### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
+
+#### Make login possible to save your tags
+
+#### sort tags by date
+
+#### In options page - show how many times it has been tagged and upvoted or downvoted
