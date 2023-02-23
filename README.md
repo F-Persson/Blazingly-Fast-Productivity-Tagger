@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Usage
+My first Angular project, made for gaining knowledge about the framework. 
+
+## What is it
+Tagger is a Chrome extension to simplify the usage of bookmark and notes. 
+
+## How to
+Mark text on any page (optional)
+press "ctrl + left mouse click" - you'll get a popup to save the text and url, with option to add tags for that site.
+
+To access your bookmarks and notes, press "ctrl + right mouse click".
