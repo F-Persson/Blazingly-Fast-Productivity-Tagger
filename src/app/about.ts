@@ -9,8 +9,9 @@ export const aboutItem: TagItem[] = [
         tags: ["about", "contact", "help", "feedback"],
         time: new Date().toLocaleString(),
         isEditing: false,
-        isFlipped: false,
+        isFlipped: true,
         isShowing: true,
+        metaDescription: "This is a chrome extension for saving and sharing your bookmarks. It's a work in progress, but you can try it out. It's open source and free to use. If you have any feedback or suggestions please contact me at the bottom of this page."
     },
     {
         title: "TODO:",
@@ -20,8 +21,9 @@ export const aboutItem: TagItem[] = [
         tags: ["Tagger", "Version 0.5", "Open Source", "feedback"],
         time: new Date().toLocaleString(),
         isEditing: false,
-        isFlipped: false,
+        isFlipped: true,
         isShowing: true,
+        metaDescription: "This is a chrome extension for saving and sharing your bookmarks. It's a work in progress, but you can try it out. It's open source and free to use. If you have any feedback or suggestions please contact me at the bottom of this page."
     },
     {
         title: "How to",
@@ -33,5 +35,6 @@ export const aboutItem: TagItem[] = [
         isEditing: false,
         isFlipped: true,
         isShowing: true,
+        metaDescription: "This is a chrome extension for saving and sharing your bookmarks. It's a work in progress, but you can try it out. It's open source and free to use. If you have any feedback or suggestions please contact me at the bottom of this page."
     }
 ];
