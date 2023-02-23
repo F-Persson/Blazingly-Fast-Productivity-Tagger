@@ -7,8 +7,12 @@ document.addEventListener('mousedown', function (e) {
         }
         let url = window.location.href;
         let title = document.title;
+        let metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription = metaDescription.getAttribute("content");
+        }
         // let html = gethtml();
-        openPopup(selectedText, url, title);
+        openPopup(selectedText, url, title, metaDescription);
     };
     if (e.ctrlKey && e.button === 2) {
         openOptionsTab();
@@ -22,13 +26,14 @@ function openOptionsTab() {
 }
 
 // Send message to background.js to open popup
-function openPopup(selectedText, url, title) {
+function openPopup(selectedText, url, title, metaDescription) {
     (async () => {
         chrome.runtime.sendMessage({
             selectedText: selectedText,
             url: url,
             title: title,
             action: "createWindow",
+            metaDescription: metaDescription
         });
     })();
 }

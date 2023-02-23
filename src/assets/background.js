@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.action === "createWindow") {
-            openPopup(request.selectedText, request.url, request.title, request.html);
+            openPopup(request.selectedText, request.url, request.title, request.metaDescription);
         };
         if (request.action === "openOptionsTab") {
             openOptionsTab();
@@ -18,7 +18,7 @@ function openOptionsTab() {
 
 
 //openPopup;
-function openPopup(selectedText, url, title, html) {
+function openPopup(selectedText, url, title, metaDescription) {
     chrome.windows.getCurrent(function (currentWindow) {
         const windowWidth = 500;
         const windowHeight = 350;
@@ -28,7 +28,7 @@ function openPopup(selectedText, url, title, html) {
         const top = Math.round(
             currentWindow.top + (currentWindow.height - windowHeight) / 2
         );
-        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}`;
+        const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}&metaDescription=${encodeURIComponent(metaDescription)}`;
         chrome.windows.create({
             url: popupUrl,
             type: "popup",
