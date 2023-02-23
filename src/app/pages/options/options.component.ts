@@ -85,17 +85,7 @@ export class OptionsComponent {
 
 
     this.searchResults = results.map((result: TagItem) => {
-      return {
-        id: result.id,
-        tags: result.tags,
-        time: result.time,
-        selection: result.selection,
-        url: result.url,
-        title: result.title,
-        isEditing: result.isEditing,
-        isFlipped: result.isFlipped,
-        isShowing: result.isShowing,
-      };
+      return result;
     });
     console.log('Search results: ', this.searchResults);
   }
