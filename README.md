@@ -1,29 +1,28 @@
-## Usage
-My first Angular project, made for gaining knowledge about the framework. 
+# Tagger
 
-## What is it
-Tagger is a Chrome extension to simplify the usage of bookmark and notes. 
+The Tagger is a Chrome extension that simplifies the usage of bookmarks and notes.
+
+## Usage
+It is my first Angular project, designed to gain knowledge about the framework.
 
 ## How to
-Mark text on any page (optional)
-press "ctrl + left mouse click" - you'll get a popup to save the text and url, with option to add tags for that site.
 
-To access your bookmarks and notes, press "ctrl + right mouse click".
+To use Tagger, mark the desired text on any webpage (optional) and press "ctrl + left mouse click." A pop-up window will appear, allowing you to save the text and URL, with the option to add tags for that site. To access your bookmarks and notes, press "ctrl + right mouse click."
 
 ## TODO
 
-### Rewrite all code to make it follow some kind of best practice. Post development and troubles in Dev.to
+### Rewrite all the code to make it follow some kind of best practice. Post-development and any troubles in Dev.to.
 
-#### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
+### Create a backend (preferably using C#) to store all users' tags. If the same URL is posted multiple times, add +1 to the "all tags" area and give the option to see which tags have the most "+" within a specific time period, such as today, this week, or this month.
 
-#### Make login possible to save your tags
+### Allow login to save your tags.
 
-#### sort tags by date
+### Sort tags by date.
 
-#### In options page - show how many times it has been tagged and upvoted or downvoted
+### In the options page, show how many times the tag has been tagged, upvoted, or downvoted.
 
 
-# Tagger
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
