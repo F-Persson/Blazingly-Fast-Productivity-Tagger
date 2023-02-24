@@ -22,10 +22,6 @@ To use Tagger, mark the desired text on any webpage (optional) and press "ctrl +
 ### In the options page, show how many times the tag has been tagged, upvoted, or downvoted.
 
 
-#### Color theme inspired by https://github.com/gurusabarish/hugo-profile
-
-#### Icon made in https://www.freelogodesign.org/
-
 
 ## Angular
 
@@ -54,3 +50,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Thanks to 
+
+#### https://github.com/dexie/Dexie.js for a great product and helping me develop this.
+
+#### Color theme inspired by https://github.com/gurusabarish/hugo-profile
+
+#### Icon made in https://www.freelogodesign.org/
+
