@@ -22,6 +22,11 @@ To use Tagger, mark the desired text on any webpage (optional) and press "ctrl +
 ### In the options page, show how many times the tag has been tagged, upvoted, or downvoted.
 
 
+#### Color theme inspired by https://github.com/gurusabarish/hugo-profile
+
+#### Icon made in https://www.freelogodesign.org/
+
+
 ## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
