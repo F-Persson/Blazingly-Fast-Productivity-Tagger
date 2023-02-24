@@ -53,7 +53,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Thanks to 
 
-#### https://github.com/dexie/Dexie.js for a great product and helping me develop this.
+#### LocalDb in extension provided by https://github.com/dexie/Dexie.js
 
 #### Color theme inspired by https://github.com/gurusabarish/hugo-profile
 
