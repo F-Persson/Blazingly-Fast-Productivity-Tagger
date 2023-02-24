@@ -40,6 +40,8 @@ To access your bookmarks and notes, press "ctrl + right mouse click".
 
 ## TODO
 
+### Rewrite all code to make it follow some kind of best practice. Post development and troubles in Dev.to
+
 #### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
 
 #### Make login possible to save your tags
