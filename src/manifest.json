@@ -7,14 +7,6 @@
     "background": {
         "service_worker": "assets/background.js"
     },
-    "permissions": [
-        "storage",
-        "activeTab",
-        "contextMenus",
-        "bookmarks",
-        "scripting",
-        "tabs"
-    ],
     "content_scripts": [
         {
             "matches": [
