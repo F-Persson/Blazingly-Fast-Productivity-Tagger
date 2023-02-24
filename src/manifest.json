@@ -1,7 +1,7 @@
 {
     "name": "Tagger",
-    "description": "Save notes and bookmarks",
-    "version": "1.0",
+    "description": "Save notes and bookmarks. This software is released under the terms of the MIT license: https://opensource.org/licenses/MIT",
+    "version": "0.5.0",
     "manifest_version": 3,
     "author": "Francis P",
     "background": {
