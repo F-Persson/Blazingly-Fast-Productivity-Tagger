@@ -1,3 +1,28 @@
+## Usage
+My first Angular project, made for gaining knowledge about the framework. 
+
+## What is it
+Tagger is a Chrome extension to simplify the usage of bookmark and notes. 
+
+## How to
+Mark text on any page (optional)
+press "ctrl + left mouse click" - you'll get a popup to save the text and url, with option to add tags for that site.
+
+To access your bookmarks and notes, press "ctrl + right mouse click".
+
+## TODO
+
+### Rewrite all code to make it follow some kind of best practice. Post development and troubles in Dev.to
+
+#### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
+
+#### Make login possible to save your tags
+
+#### sort tags by date
+
+#### In options page - show how many times it has been tagged and upvoted or downvoted
+
+
 # Tagger
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
@@ -25,27 +50,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Usage
-My first Angular project, made for gaining knowledge about the framework. 
-
-## What is it
-Tagger is a Chrome extension to simplify the usage of bookmark and notes. 
-
-## How to
-Mark text on any page (optional)
-press "ctrl + left mouse click" - you'll get a popup to save the text and url, with option to add tags for that site.
-
-To access your bookmarks and notes, press "ctrl + right mouse click".
-
-## TODO
-
-### Rewrite all code to make it follow some kind of best practice. Post development and troubles in Dev.to
-
-#### Backend (preferable C#) that stores all users tags. If the same url is posted multiple times - add +1 in the all tags area and give the option to see which tags has the most + within a specifc time. Today, this week, month etc.
-
-#### Make login possible to save your tags
-
-#### sort tags by date
-
-#### In options page - show how many times it has been tagged and upvoted or downvoted
