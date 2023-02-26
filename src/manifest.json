@@ -7,10 +7,6 @@
     "background": {
         "service_worker": "assets/background.js"
     },
-    "permissions": [
-        "activeTab",
-        "storage"
-    ],
     "content_scripts": [
         {
             "matches": [
@@ -21,6 +17,5 @@
             ]
         }
     ],
-    "options_page": "index.html#options",
-    "privacy_policy": "https://github.com/F-Persson/tagger/blob/master/privacy_policy"
+    "options_page": "index.html#options"
 }
