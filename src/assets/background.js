@@ -1,5 +1,6 @@
+// listen for the message from content.js
 chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
+    function (request) {
         if (request.action === "createWindow") {
             openPopup(request.selectedText, request.url, request.title, request.metaDescription);
         };
@@ -28,6 +29,7 @@ function openPopup(selectedText, url, title, metaDescription) {
         const top = Math.round(
             currentWindow.top + (currentWindow.height - windowHeight) / 2
         );
+        // This will be sent to the index.html path you have in your Angular app.
         const popupUrl = `index.html#popup?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&selectedText=${encodeURIComponent(selectedText)}&metaDescription=${encodeURIComponent(metaDescription)}`;
         chrome.windows.create({
             url: popupUrl,

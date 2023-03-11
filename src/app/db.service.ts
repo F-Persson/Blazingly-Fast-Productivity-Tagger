@@ -29,10 +29,33 @@ export class DbService extends Dexie {
     this.TagItem = this.table('TagItem');
   }
 
-  getAllItems(): Promise<TagItem[]> {
-    return this.TagItem.toArray();
+  // add tagItem
+  async addItem(TagItem: TagItem) {
+    try {
+      await this.TagItem.add(TagItem);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
+  // delete tagItem
+  async deleteItem(id: number) {
+    try {
+      await this.TagItem.delete(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // get all tagItems
+  async getAllItems(): Promise<TagItem[]> {
+    try {
+      return await this.TagItem.toArray();
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }
 
 
   async updateItem(TagItem: TagItem) {

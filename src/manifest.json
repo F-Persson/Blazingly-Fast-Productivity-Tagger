@@ -1,16 +1,12 @@
 {
-    "name": "Tagger",
-    "description": "Save notes and bookmarks. This software is released under the terms of the MIT license: https://opensource.org/licenses/MIT",
+    "name": "Blazingly Fast Productivity Tagger",
+    "description": "Ultimate productivty booster for your notes and bookmarks",
     "version": "0.5.0",
     "manifest_version": 3,
     "author": "Francis P",
     "background": {
         "service_worker": "assets/background.js"
     },
-    "permissions": [
-        "activeTab",
-        "storage"
-    ],
     "content_scripts": [
         {
             "matches": [
@@ -21,6 +17,5 @@
             ]
         }
     ],
-    "options_page": "index.html#options",
-    "privacy_policy": "https://github.com/F-Persson/tagger/blob/master/privacy_policy"
+    "options_page": "index.html#options"
 }
