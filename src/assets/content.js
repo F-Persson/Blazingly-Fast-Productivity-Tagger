@@ -12,6 +12,7 @@ document.addEventListener('mousedown', function (e) {
     };
 });
 
+// open options tab
 function openOptionsTab() {
     chrome.runtime.sendMessage({
         action: "openOptionsTab",
@@ -25,7 +26,7 @@ function openPopup(selectedText, url, title, metaDescription) {
             selectedText: selectedText,
             url: url,
             title: title,
-            action: "createWindow",
+            action: "createWindow", // this is the action that the background.js will listen for
             metaDescription: metaDescription
         });
     })();

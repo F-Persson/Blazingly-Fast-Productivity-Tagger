@@ -16,7 +16,6 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
   { path: 'options', component: OptionsComponent },
   { path: 'popup', component: PopupComponent },
 ];
