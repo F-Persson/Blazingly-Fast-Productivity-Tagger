@@ -1,19 +1,10 @@
 // listen for ctrl + mouse click
 document.addEventListener('mousedown', function (e) {
     if (e.ctrlKey && e.button === 0) {
-        let selectedText = getSelectedText();
-        if (selectedText === "") {
-            selectedText = "Click to edit";
-        }
+        let selectedText = getSelectedText()
         let url = window.location.href;
         let title = document.title;
-        let metaDescription = document.querySelector('meta[name="description"]');
-        if (metaDescription) {
-            metaDescription = metaDescription.getAttribute("content");
-        } else {
-            metaDescription = selectedText;
-        }
-        // let html = gethtml();
+        let metaDescription = document.querySelector('meta[name="description"]') ? document.querySelector('meta[name="description"]').getAttribute("content") : selectedText;
         openPopup(selectedText, url, title, metaDescription);
     };
     if (e.ctrlKey && e.button === 2) {
@@ -40,22 +31,17 @@ function openPopup(selectedText, url, title, metaDescription) {
     })();
 }
 
-// function gethtml() {
-//     const selection = window.getSelection();
-//     const range = selection.getRangeAt(0);
-//     const container = document.createElement("div");
-//     container.appendChild(range.cloneContents());
-//     const html = container.innerHTML;
-//     return html;
-// }
-
 // get selected text
 function getSelectedText() {
     var text = "";
     if (window.getSelection) {
         text = window.getSelection().toString();
+        // for different browsers
     } else if (document.selection && document.selection.type != "Control") {
         text = document.selection.createRange().text;
+    }
+    if (text === "") {
+        return "Click to edit";
     }
     return text;
 }
