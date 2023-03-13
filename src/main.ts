@@ -46,11 +46,19 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   
   // Add todo list in "All tags"
   // Added it in about page instead
+  // Add post requests and get requests to the backend
   
   // TODO
 
-  // Add post requests and get requests to the backend
+  // Create an API with C# for the backend and try to connect and posting with the discordService
+
   // To share the TagItem with all users in a public domain
+
+  // Add catch to the fetch request in the displaycomponent and not in the db.services - the most upper level will catch the error
+
+  // Move the button, displayitems, icon, selection, tags, title, to the shared folder
+  // Make a header component and move the   <div class="topbar-container"> from the options page to the header component
+
 
 
   // instead of the save button in the popup page, when in options page - show how many times it has been tagged and upvoted or downvoted

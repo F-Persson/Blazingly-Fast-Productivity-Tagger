@@ -1,4 +1,4 @@
-import { TagItem } from 'src/app/db.service';
+import { TagItem } from 'src/app/services/db.service';
 
 export const aboutItem: TagItem[] = [
     {

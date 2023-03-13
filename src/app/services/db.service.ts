@@ -29,34 +29,14 @@ export class DbService extends Dexie {
     this.TagItem = this.table('TagItem');
   }
 
-  // add tagItem
-  async addItem(TagItem: TagItem) {
-    try {
-      await this.TagItem.add(TagItem);
-    } catch (error) {
-      console.log(error);
-    }
+  getAllItems(): Promise<TagItem[]> {
+    return this.TagItem.toArray();
   }
 
-  // delete tagItem
-  async deleteItem(id: number) {
-    try {
-      await this.TagItem.delete(id);
-    } catch (error) {
-      console.log(error);
-    }
+  async createItem(TagItem: TagItem): Promise<void> {
+    console.log('Creating item with id: ' + TagItem.id);
+    await db.TagItem.add(TagItem, TagItem.id);
   }
-
-  // get all tagItems
-  async getAllItems(): Promise<TagItem[]> {
-    try {
-      return await this.TagItem.toArray();
-    } catch (error) {
-      console.log(error);
-      return [];
-    }
-  }
-
 
   async updateItem(TagItem: TagItem) {
     await db.TagItem.update(TagItem.id, {
@@ -65,8 +45,6 @@ export class DbService extends Dexie {
       isFlipped: TagItem.isFlipped,
     });
   }
-
-
 }
 
 export const db = new DbService();

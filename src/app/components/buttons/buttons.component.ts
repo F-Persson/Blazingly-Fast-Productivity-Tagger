@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DbService, TagItem } from 'src/app/db.service';
+import { DbService, TagItem } from 'src/app/services/db.service';
 
 
 export interface Tag {

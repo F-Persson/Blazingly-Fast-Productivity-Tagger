@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { liveQuery } from 'dexie';
-import { DbService, TagItem } from 'src/app/db.service';
-import { aboutItem } from 'src/app/about';
+import { DbService, TagItem } from 'src/app/services/db.service';
+import { aboutItem } from 'src/app/pages/about';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class OptionsComponent {
   showAbout: boolean = false;
   aboutItem: TagItem[] = aboutItem;
 
-
+  // Can delete this function
   async exportItemsToJson() {
     // get all items from db
     const allItems = await this.db.TagItem.toArray();
