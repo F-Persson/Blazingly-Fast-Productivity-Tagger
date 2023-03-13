@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,6 +15,7 @@ import { SelectionComponent } from './components/selection/selection.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DiscordService } from './services/discord-service.service';
 
 const appRoutes: Routes = [
   { path: 'options', component: OptionsComponent },
@@ -37,9 +39,10 @@ const appRoutes: Routes = [
     BrowserModule,
     FontAwesomeModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true, useHash: true }),
   ],
-  providers: [],
+  providers: [DiscordService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -73,8 +73,8 @@
           (textEdited)="onEdited($event)"
         ></app-selection>
 
-        <form *ngIf="save" (submit)="saveEdit(TagItem)">
-          <input type="submit" [value]="'Save'" class="button" />
+        <form *ngIf="save" (submit)="onSubmit(TagItem, save)">
+          <input type="submit" [value]="'save'" class="button" />
         </form>
       </div>
     </div>

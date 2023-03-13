@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TagItem } from 'src/app/db.service';
+import { TagItem } from 'src/app/services/db.service';
 
 
 @Component({
