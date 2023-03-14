@@ -1,0 +1,22 @@
+<div class="topbar-container">
+  <input
+    type="search"
+    class="search"
+    placeholder="Search"
+    (input)="searchOnChange($event)"
+  />
+
+  <app-buttons
+    [isDropdown]="false"
+    [text]="'Flip'"
+    (click)="flipAll()"
+  ></app-buttons>
+
+  <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
+
+  <app-buttons
+    [isDropdown]="false"
+    [text]="showAbout ? 'Back' : 'About'"
+    (click)="toggleAbout()"
+  ></app-buttons>
+</div>

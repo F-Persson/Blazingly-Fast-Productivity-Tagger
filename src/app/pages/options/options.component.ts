@@ -10,49 +10,24 @@ import { aboutItem } from 'src/app/pages/about';
   styleUrls: ['./options.component.scss'],
 })
 export class OptionsComponent {
-
-
+  aboutItem: TagItem[] = aboutItem;
+  save: boolean = false;
+  tagItems: TagItem[] = [];
 
   constructor(private db: DbService) {
     liveQuery(() => db.TagItem.toArray()).subscribe((tagItems: TagItem[]) => {
       this.tagItems = tagItems;
     });
   }
-  save: boolean = false;
-  tagItems: TagItem[] = [];
-  searchResults: TagItem[] = [];
-  hasSearchResults = false;
-  flipall: boolean = false;
+
+
   showAbout: boolean = false;
-  aboutItem: TagItem[] = aboutItem;
-
-  // Can delete this function
-  async exportItemsToJson() {
-    // get all items from db
-    const allItems = await this.db.TagItem.toArray();
-    // create a json string
-    const json = JSON.stringify(allItems);
-    // create a blob
-    const blob = new Blob([json], { type: 'application/json' });
-    // create a url
-    const url = window.URL.createObjectURL(blob);
-    // create a link
-    const link = document.createElement('a');
-    // set the link's href to the url
-    link.href = url;
-    link.download = 'tagger.json';
-    // click the link
-    link.click();
-    // remove the link
-    link.remove();
-    URL.revokeObjectURL(url);
-
-  }
-
-  goToAbout() {
+  toggleAbout() {
     this.showAbout = !this.showAbout;
   }
 
+
+  flipall: boolean = false;
   flipAll() {
     this.flipall = !this.flipall;
     this.tagItems.forEach((item: TagItem) => {
@@ -63,10 +38,9 @@ export class OptionsComponent {
     });
   }
 
-
-  async searchOnChange(event: any) {
-    const searchTerm = event.target.value.trim();
-
+  searchResults: TagItem[] = [];
+  hasSearchResults = false;
+  async onSearch(searchTerm: string) {
     if (searchTerm.length === 0) {
       this.searchResults = [];
       this.hasSearchResults = false;
@@ -83,12 +57,9 @@ export class OptionsComponent {
         || item.tags?.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     });
 
-
     this.searchResults = results.map((result: TagItem) => {
       return result;
     });
     console.log('Search results: ', this.searchResults);
   }
-
-
 }

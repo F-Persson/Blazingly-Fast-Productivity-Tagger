@@ -1,37 +1,10 @@
 <div class="page">
-  <div class="topbar-container">
-    <input
-      type="search"
-      class="search"
-      placeholder="Search"
-      (input)="searchOnChange($event)"
-    />
-
-    <app-buttons
-      [isDropdown]="false"
-      [text]="'Flip'"
-      (click)="flipAll()"
-    ></app-buttons>
-
-    <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
-    <!-- <app-buttons
-    [isDropdown]="false"
-    [text]="'Import'"
-    (click)="importItemsToJson()"
-  ></app-buttons> -->
-    <app-buttons
-      [isDropdown]="false"
-      [text]="'Export'"
-      (click)="exportItemsToJson()"
-    ></app-buttons>
-    <!-- <app-buttons [isDropdown]="false" [text]="'All tags'"></app-buttons> -->
-    <app-buttons
-      [isDropdown]="false"
-      [text]="showAbout ? 'Back' : 'About'"
-      (click)="goToAbout()"
-    ></app-buttons>
-  </div>
-
+  <app-header
+    [showAbout]="showAbout"
+    (aboutClicked)="toggleAbout()"
+    (flipCards)="flipAll()"
+    (search)="onSearch($event)"
+  ></app-header>
   <div class="app-container" *ngIf="!showAbout">
     <app-displayitems
       [tagItems]="hasSearchResults ? searchResults : tagItems"

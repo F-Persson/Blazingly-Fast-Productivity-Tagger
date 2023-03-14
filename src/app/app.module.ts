@@ -8,14 +8,15 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OptionsComponent } from './pages/options/options.component';
 import { PopupComponent } from './pages/popup/popup.component';
-import { DisplayitemsComponent } from './components/displayitems/displayitems.component';
-import { IconComponent } from './components/icon/icon.component';
-import { TitleComponent } from './components/title/title.component';
-import { SelectionComponent } from './components/selection/selection.component';
-import { TagsComponent } from './components/tags/tags.component';
-import { ButtonsComponent } from './components/buttons/buttons.component';
+import { DisplayitemsComponent } from './shared/displayitems/displayitems.component';
+import { IconComponent } from './shared/icon/icon.component';
+import { TitleComponent } from './shared/title/title.component';
+import { SelectionComponent } from './shared/selection/selection.component';
+import { TagsComponent } from './shared/tags/tags.component';
+import { ButtonsComponent } from './shared/buttons/buttons.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DiscordService } from './services/discord-service.service';
+import { HeaderComponent } from './components/header/header.component';
 
 const appRoutes: Routes = [
   { path: 'options', component: OptionsComponent },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     TagsComponent,
     ButtonsComponent,
     FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

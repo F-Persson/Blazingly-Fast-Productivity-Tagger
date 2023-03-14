@@ -2,10 +2,10 @@
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 4%;
+  // top: 4%;
   left: 0;
   overflow: auto;
-  z-index: 0;
+  // z-index: 0;
 }
 
 .container-item {
@@ -21,38 +21,4 @@
   left: 0;
   height: 4%;
   margin-bottom: 1px;
-  display: flex;
-  align-items: center;
-}
-
-.topbar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  z-index: 1;
-}
-
-.topbar-container input {
-  margin: 15px;
-}
-
-.topbar-container app-buttons {
-  margin: 15px;
-}
-
-.search {
-  background-color: #30475e;
-  color: white;
-  font-weight: bold;
-  margin: 15px auto;
-  display: block;
-  border-radius: 5px;
-  font-size: 14px;
-  border: 2px solid steelblue;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.search:hover {
-  border: 2px solid gold;
 }
