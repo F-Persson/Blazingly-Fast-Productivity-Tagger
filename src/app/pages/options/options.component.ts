@@ -20,7 +20,6 @@ export class OptionsComponent {
     });
   }
 
-
   showAbout: boolean = false;
   toggleAbout() {
     this.showAbout = !this.showAbout;
@@ -47,7 +46,6 @@ export class OptionsComponent {
       return;
     }
     this.hasSearchResults = true;
-
 
     const allItems = await this.db.TagItem.toArray();
     const results = allItems.filter((item: TagItem) => {

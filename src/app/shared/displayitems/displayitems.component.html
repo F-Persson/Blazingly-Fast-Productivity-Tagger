@@ -57,11 +57,7 @@
           [className]="'faTrash'"
           [icon]="!TagItem.isEditing ? faEdit : faCheck"
           [color]="'rgb(17, 17, 95)'"
-          (click)="
-            !TagItem.isEditing
-              ? editSelection(TagItem)
-              : this.selectionComponent.edited(TagItem)
-          "
+          (click)="this.selectionComponent.edited(TagItem)"
         ></app-icon>
 
         <app-title [title]="TagItem.title" [url]="TagItem.url"> </app-title>

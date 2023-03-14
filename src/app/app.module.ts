@@ -15,7 +15,7 @@ import { SelectionComponent } from './shared/selection/selection.component';
 import { TagsComponent } from './shared/tags/tags.component';
 import { ButtonsComponent } from './shared/buttons/buttons.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { DiscordService } from './services/discord-service.service';
+import { BackendService } from './services/backend-service.service';
 import { HeaderComponent } from './components/header/header.component';
 
 const appRoutes: Routes = [
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true, useHash: true }),
   ],
-  providers: [DiscordService],
+  providers: [BackendService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
