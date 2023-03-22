@@ -75,7 +75,7 @@ export class DisplayitemsComponent {
         }
       );
 
-      window.close();
+      //window.close();
     } else {
       console.log('updating item ' + TagItem.id);
       await this.db.updateItem(TagItem);

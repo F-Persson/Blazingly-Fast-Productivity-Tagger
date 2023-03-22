@@ -53,11 +53,11 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   
   // TODOOOOOOOOOO !!!
 
+  // For google oauth - use this package
+  // https://www.npmjs.com/package/@abacritt/angularx-social-login
+
   // Add login option to sync and share the TagItem with all users in a public domain
 
   // Add catch to the fetch request in the displaycomponent and not in the db.services - the most upper level will catch the error
-
-
-
 
   // instead of the save button in the popup page, when in options page - show how many times it has been tagged and upvoted or downvoted

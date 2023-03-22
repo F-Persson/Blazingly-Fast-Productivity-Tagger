@@ -22,7 +22,7 @@ export class PopupComponent {
         this.tagItems = [{
           id: maxId + 1,
           tags: [],
-          time: new Date().toLocaleString(),
+          time: new Date().toISOString(),
           selection: params['selectedText'],
           url: params['url'],
           title: params['title'],

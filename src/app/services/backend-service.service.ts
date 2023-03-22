@@ -11,12 +11,23 @@ export class BackendService {
     // URL of your back end server
     const url = this.WEBHOOK_URL;
 
+    const apiItem = {
+      id: data.id,
+      tags: data.tags,
+      time: data.time,
+      selection: data.selection,
+      url: data.url,
+      title: data.title,
+      metaDescription: data.metaDescription
+    };
+
     const options = {
       headers: {
         'Content-Type': 'application/json'
       }
     };
-    const body = JSON.stringify(data);
+
+    const body = JSON.stringify(apiItem);
     // Make a post request and return an Observable
     return this.http.post(url, body, options);
   }
