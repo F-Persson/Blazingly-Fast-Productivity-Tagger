@@ -19,7 +19,6 @@ export class ButtonsComponent implements Tag {
   constructor(private db: DbService) { }
   @Input() text!: string;
   @Input() isDropdown!: boolean;
-  @Output() showTagItem = new EventEmitter<TagItem>();
 
   dropDown: boolean = false;
 
@@ -47,7 +46,6 @@ export class ButtonsComponent implements Tag {
 
 
   async showItem(itemOfTag: Tag) {
-    console.log("in showitem");
 
     const allItems = await this.db.TagItem.toArray();
 

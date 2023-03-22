@@ -13,9 +13,15 @@ export class HeaderComponent {
   @Output() aboutClicked = new EventEmitter<boolean>();
   @Output() flipCards = new EventEmitter<boolean>();
   @Output() search = new EventEmitter<string>();
+  @Output() showAll = new EventEmitter<boolean>();
 
   toggleAbout() {
     this.aboutClicked.emit();
+  }
+
+  allTags() {
+    console.log("Getting all tags");
+    this.showAll.emit();
   }
 
   flipall: boolean = false;

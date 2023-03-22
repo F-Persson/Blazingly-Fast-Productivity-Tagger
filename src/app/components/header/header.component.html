@@ -16,6 +16,12 @@
 
   <app-buttons
     [isDropdown]="false"
+    [text]="'All tags'"
+    (click)="allTags()"
+  ></app-buttons>
+
+  <app-buttons
+    [isDropdown]="false"
     [text]="showAbout ? 'Back' : 'About'"
     (click)="toggleAbout()"
   ></app-buttons>

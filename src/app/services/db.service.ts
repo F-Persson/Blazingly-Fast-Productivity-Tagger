@@ -3,7 +3,7 @@ import Dexie, { Table } from 'dexie';
 
 export interface TagItem {
   id: number;
-  tags?: string[];
+  tags: string[];
   time: string;
   selection: string;
   url: string;
