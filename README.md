@@ -1,5 +1,9 @@
 # Tagger
 
+You can download the Chrome extension from the [Chrome webstore](https://chrome.google.com/webstore/detail/blazingly-fast-productivi/hdgfgakegaomphiamhmipijgfgofcmjh?hl=en&authuser=0)
+
+
+
 The Tagger is a Chrome extension that simplifies the usage of bookmarks and notes.
 
 ## Usage
