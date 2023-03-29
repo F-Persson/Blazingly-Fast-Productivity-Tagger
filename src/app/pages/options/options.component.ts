@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { liveQuery } from 'dexie';
 import { DbService, TagItem } from 'src/app/services/db.service';
 import { aboutItem } from 'src/app/pages/about';
+import { BackendService } from 'src/app/services/backend-service.service';
 
 
 @Component({
@@ -14,16 +15,22 @@ export class OptionsComponent {
   save: boolean = false;
   tagItems: TagItem[] = [];
 
-  constructor(private db: DbService) {
+  constructor(private db: DbService, private BackendService: BackendService) {
     liveQuery(() => db.TagItem.toArray()).subscribe((tagItems: TagItem[]) => {
       this.tagItems = tagItems;
     });
   }
 
-
   showAbout: boolean = false;
   toggleAbout() {
     this.showAbout = !this.showAbout;
+  }
+
+  toggleAll() {
+    console.log("showing all tags");
+    this.BackendService.getAll().subscribe((data: TagItem[]) => {
+      this.tagItems = data;
+    });
   }
 
 
@@ -47,7 +54,6 @@ export class OptionsComponent {
       return;
     }
     this.hasSearchResults = true;
-
 
     const allItems = await this.db.TagItem.toArray();
     const results = allItems.filter((item: TagItem) => {

@@ -2,7 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import { faTimes, faTrash, faEdit, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { SelectionComponent } from '../selection/selection.component';
 import { DbService, TagItem } from 'src/app/services/db.service';
-
+import { BackendService } from 'src/app/services/backend-service.service';
 
 
 @Component({
@@ -11,61 +11,15 @@ import { DbService, TagItem } from 'src/app/services/db.service';
   styleUrls: ['./displayitems.component.scss'],
 })
 export class DisplayitemsComponent {
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private BackendService: BackendService) { }
   @Input() showFooter: boolean = false;
   @Input() tagItems?: TagItem[];
-  @Input() save!: boolean;
   @ViewChild("SelectionComponent") selectionComponent!: SelectionComponent;
-
 
   faTimes = faTimes;
   faTrash = faTrash;
   faEdit = faEdit;
   faCheck = faCheck;
-  inAbout = false;
-
-  onShowAboutChange() {
-    this.inAbout = !this.inAbout;
-  }
-
-
-  async onEdited(TagItem: TagItem): Promise<void> {
-    if (this.save) {
-      TagItem.isEditing = !TagItem.isEditing;
-    }
-    else {
-      console.log("Updating selection");
-      await this.db.updateItem(TagItem);
-    }
-  }
-
-
-  flipcard(TagItem: TagItem): void {
-    console.log("flipping item: " + TagItem.id);
-    TagItem.isFlipped = !TagItem.isFlipped;
-    setTimeout(async () => {
-      await this.db.updateItem(TagItem);
-    }, 500);
-  }
-
-
-  editSelection(TagItem: TagItem): void {
-    TagItem.isEditing = !TagItem.isEditing;
-  }
-
-
-  async saveEdit(TagItem: TagItem): Promise<void> {
-    console.log('Updated item: ' + TagItem.id);
-    await this.db.TagItem.update(TagItem.id, {
-      tags: TagItem.selection,
-    });
-  }
-
-
-  async onTagAdded(tagItem: TagItem): Promise<void> {
-    await this.db.updateItem(tagItem);
-  }
-
 
   shorten(str: string, len: number): string {
     if (str.length <= len) {
@@ -75,25 +29,56 @@ export class DisplayitemsComponent {
     }
   }
 
+  @Input() save!: boolean;
+  async onEdited(TagItem: TagItem): Promise<void> {
+    console.log("Updating selection");
+    await this.db.updateItem(TagItem);
+  }
+
+  flipcard(TagItem: TagItem): void {
+    console.log("flipping item: " + TagItem.id);
+    TagItem.isFlipped = !TagItem.isFlipped;
+    setTimeout(async () => {
+      await this.db.updateItem(TagItem);
+    }, 500);
+  }
+
+  async onTagAdded(tagItem: TagItem): Promise<void> {
+    await this.db.updateItem(tagItem);
+  }
+
   async deleteTag(TagItem: TagItem, tag: string): Promise<void> {
     console.log('Deleting tag ' + tag + ' from item ' + TagItem.id);
     TagItem.tags = TagItem.tags?.filter((t) => t !== tag);
     await this.db.updateItem(TagItem);
   }
 
-  async onSubmit(TagItem: TagItem, save: boolean): Promise<void> {
-    if (save) {
+  async deleteItem(TagItem: TagItem): Promise<void> {
+    console.log('Deleted item created at: ' + TagItem.time);
+    await this.db.TagItem.delete(TagItem.id);
+  }
+
+  async onSubmit(TagItem: TagItem, save: boolean) {
+    if (save) { // And if user is not logged in
       console.log('Creating item ' + TagItem.id);
       await this.db.createItem(TagItem);
-      window.close();
+
+      // Call the postData() method from the service component
+      this.BackendService.postData(TagItem).subscribe(
+        // Handle success
+        (response: any) => {
+          console.log('Data posted successfully', response);
+        },
+        // Handle error
+        (error: any) => {
+          console.error('Error posting data', error);
+        }
+      );
+
+      //window.close();
     } else {
       console.log('updating item ' + TagItem.id);
       await this.db.updateItem(TagItem);
     }
-  }
-
-  async deleteItem(TagItem: TagItem): Promise<void> {
-    console.log('Deleted item created at: ' + TagItem.time);
-    await this.db.TagItem.delete(TagItem.id);
   }
 }

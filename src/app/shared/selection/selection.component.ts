@@ -11,22 +11,15 @@ export class SelectionComponent {
   @Output() textEdited = new EventEmitter<TagItem>();
 
   textareaValue!: string;
-
   ngOnInit() {
     this.textareaValue = this.TagItem.selection;
   }
 
-
   edited(TagItem: TagItem) {
-    TagItem.selection = this.textareaValue;
-    this.textEdited.emit(TagItem);
-  }
-
-  shorten(str: string, len: number): string {
-    if (str.length <= len) {
-      return str;
-    } else {
-      return str.slice(0, len) + '...';
+    TagItem.isEditing = !TagItem.isEditing;
+    if (!TagItem.isEditing) {
+      TagItem.selection = this.textareaValue;
+      this.textEdited.emit(TagItem);
     }
   }
 }

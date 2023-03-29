@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DbService, TagItem } from 'src/app/services/db.service';
-import { DiscordService } from 'src/app/services/discord-service.service';
+
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
@@ -10,25 +10,10 @@ import { DiscordService } from 'src/app/services/discord-service.service';
 })
 
 export class PopupComponent {
-  constructor(private route: ActivatedRoute, private db: DbService, private DiscordService: DiscordService) { }
+  constructor(private route: ActivatedRoute, private db: DbService) { }
   save: boolean = true;
   tagItems: TagItem[] = [];
 
-
-
-  onSubmit(data: TagItem) {
-    // Call the postData() method from the service component
-    this.DiscordService.postData(data).subscribe(
-      // Handle success
-      (response: any) => {
-        console.log('Data posted successfully', response);
-      },
-      // Handle error
-      (error: any) => {
-        console.error('Error posting data', error);
-      }
-    );
-  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -37,7 +22,7 @@ export class PopupComponent {
         this.tagItems = [{
           id: maxId + 1,
           tags: [],
-          time: new Date().toLocaleString(),
+          time: new Date().toISOString(),
           selection: params['selectedText'],
           url: params['url'],
           title: params['title'],
@@ -46,7 +31,6 @@ export class PopupComponent {
           isFlipped: false,
           isShowing: true
         }];
-        this.onSubmit(this.tagItems[0]);
       });
     });
   }
