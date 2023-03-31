@@ -2,6 +2,10 @@
 
 You can download the Chrome extension from the [Chrome webstore](https://chrome.google.com/webstore/detail/blazingly-fast-productivi/hdgfgakegaomphiamhmipijgfgofcmjh?hl=en&authuser=0)
 
+Backend made with C# .NET - hosted on Azure with CD/CI & Github Action
+
+Database in SQL server hosted on Azure
+
 
 
 The Tagger is a Chrome extension that simplifies the usage of bookmarks and notes.
