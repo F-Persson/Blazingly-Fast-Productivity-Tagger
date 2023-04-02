@@ -14,16 +14,10 @@
 
 The Tagger is a Chrome extension that simplifies the usage of bookmarks and notes.
 
-## Usage
-It is my first Angular project, designed to gain knowledge about the framework.
-
-## How to
-
-To use Tagger, mark the desired text on any webpage (optional) and press "ctrl + left mouse click." A pop-up window will appear, allowing you to save the text and URL, with the option to add tags for that site. To access your bookmarks and notes, press "ctrl + right mouse click."
 
 ## TODO
 
-### Rewrite all the code to make it follow some kind of best practice. Post-development and any troubles in Dev.to.
+### Make "All tags" work like "your tags"
 
 ### Create a backend (preferably using C#) to store all users' tags. If the same URL is posted multiple times, add +1 to the "all tags" area and give the option to see which tags have the most "+" within a specific time period, such as today, this week, or this month.
 
@@ -32,6 +26,15 @@ To use Tagger, mark the desired text on any webpage (optional) and press "ctrl +
 ### Sort tags by date.
 
 ### In the options page, show how many times the tag has been tagged, upvoted, or downvoted.
+
+
+
+## Usage
+It is my first Angular project, designed to gain knowledge about the framework.
+
+## How to
+
+To use Tagger, mark the desired text on any webpage (optional) and press "ctrl + left mouse click." A pop-up window will appear, allowing you to save the text and URL, with the option to add tags for that site. To access your bookmarks and notes, press "ctrl + right mouse click."
 
 
 
