@@ -2,11 +2,14 @@
 
 You can download the Chrome extension from the [Chrome webstore](https://chrome.google.com/webstore/detail/blazingly-fast-productivi/hdgfgakegaomphiamhmipijgfgofcmjh?hl=en&authuser=0)
 
-Backend made with C# .NET - hosted on Azure with CD/CI & Github Action
 
-Database in SQL server hosted on Azure
+[Backend API](https://github.com/F-Persson/BlazinglyBackend) made with C# .NET
+Database in SQL server
 
 
+#### LocalDb in extension provided by https://github.com/dexie/Dexie.js
+
+#### Icon made in https://www.freelogodesign.org/
 
 The Tagger is a Chrome extension that simplifies the usage of bookmarks and notes.
 
@@ -58,12 +61,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Thanks to 
-
-#### LocalDb in extension provided by https://github.com/dexie/Dexie.js
-
-#### Color theme inspired by https://github.com/gurusabarish/hugo-profile
-
-#### Icon made in https://www.freelogodesign.org/
-
