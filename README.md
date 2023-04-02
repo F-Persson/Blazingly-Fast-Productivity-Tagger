@@ -1,10 +1,11 @@
 # Tagger
 
-You can download the Chrome extension from the [Chrome webstore](https://chrome.google.com/webstore/detail/blazingly-fast-productivi/hdgfgakegaomphiamhmipijgfgofcmjh?hl=en&authuser=0)
+#### Download from [Chrome webstore](https://chrome.google.com/webstore/detail/blazingly-fast-productivi/hdgfgakegaomphiamhmipijgfgofcmjh?hl=en&authuser=0) or download this and ng build
 
 
-[Backend API](https://github.com/F-Persson/BlazinglyBackend) made with C# .NET
-Database in SQL server
+#### [Backend API](https://github.com/F-Persson/BlazinglyBackend) made with C# .NET
+
+#### Database in SQL server
 
 
 #### LocalDb in extension provided by https://github.com/dexie/Dexie.js
