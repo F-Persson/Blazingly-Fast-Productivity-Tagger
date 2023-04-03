@@ -12,11 +12,20 @@
     (click)="flipAll()"
   ></app-buttons>
 
-  <app-buttons [isDropdown]="true" [text]="'Your tags'"></app-buttons>
+  <app-buttons
+    [isDropdown]="true"
+    [text]="'Your tags'"
+    [tagItem]="YourTagsItem"
+    [alltags]="false"
+  ></app-buttons>
+
+  <!-- [alltags]="false" -->
 
   <app-buttons
-    [isDropdown]="false"
+    [isDropdown]="true"
     [text]="'All tags'"
+    [tagItem]="AllTagsItem"
+    [alltags]="true"
     (click)="allTags()"
   ></app-buttons>
 

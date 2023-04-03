@@ -14,6 +14,12 @@ export interface TagItem {
   metaDescription?: string;
 }
 
+export interface Tag {
+  tag: string;
+  count: number;
+  showTag: boolean;
+}
+
 
 @Injectable({
   providedIn: 'root'
