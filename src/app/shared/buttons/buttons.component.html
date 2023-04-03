@@ -1,12 +1,20 @@
 <div *ngIf="isDropdown" class="button-dropdown">
   {{ text }}
   <div class="dropdown-content">
-    <div *ngFor="let tag of alltags | async">
-      <div *ngIf="!tag.showTag" class="taglist" (click)="showItem(tag)">
+    <div *ngFor="let tag of Tags">
+      <div
+        *ngIf="!tag.showTag"
+        class="taglist"
+        (click)="showItem(tag, alltags, TagItem)"
+      >
         {{ tag.tag }}: {{ tag.count }}
       </div>
 
-      <div *ngIf="tag.showTag" (click)="hideItem(tag)" class="taglist">
+      <div
+        *ngIf="tag.showTag"
+        (click)="hideItem(tag, alltags, TagItem)"
+        class="taglist"
+      >
         <span class="circle-tag"> {{ tag.tag }}: {{ tag.count }} </span>
       </div>
     </div>
