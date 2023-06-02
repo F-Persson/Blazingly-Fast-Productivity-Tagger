@@ -1,7 +1,7 @@
 {
     "name": "Blazingly Fast Productivity Tagger",
     "description": "Ultimate productivty booster for your notes and bookmarks",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "manifest_version": 3,
     "author": "Francis P",
     "background": {
