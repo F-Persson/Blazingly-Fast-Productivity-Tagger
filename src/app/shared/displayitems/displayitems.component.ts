@@ -64,10 +64,11 @@ export class DisplayitemsComponent {
       await this.db.createItem(TagItem);
 
       // Call the postData() method from the service component
-      this.BackendService.postData(TagItem).subscribe(
+      await this.BackendService.postData(TagItem).subscribe(
         // Handle success
         (response: any) => {
           console.log('Data posted successfully', response);
+          window.close();
         },
         // Handle error
         (error: any) => {
@@ -75,7 +76,6 @@ export class DisplayitemsComponent {
         }
       );
 
-      window.close();
     } else {
       console.log('updating item ' + TagItem.id);
       await this.db.updateItem(TagItem);
